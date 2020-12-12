@@ -40,7 +40,7 @@ You can yourself choose which capabilities to remove or add from the macro. More
 
 *Note* :
 
-* Foundry FVTT polymorph requires players to have rights to create new actors and tokens. You will need to allow them to "Create new characters" and "Create new tokens" from the Options configuration.
+* Foundry VTT polymorph requires players to have rights to create new actors and tokens. You will need to allow them to "Create new characters" and "Create new tokens" from the Options configuration.
 
 * You must also give the players the ownership rights to the actor of the desired shape.
 
