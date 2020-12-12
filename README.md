@@ -9,7 +9,7 @@
 * **System Compatibility**: DnD5e
 * **Module Requirement(s)**: [The Furnace](https://github.com/kakaroto/fvtt-module-furnace), [DAE](https://gitlab.com/tposney/dae), [Token Magic FX](https://github.com/Feu-Secret/Tokenmagic), [Midi-QOL](https://gitlab.com/tposney/midi-qol)
 * **Macro Requirement(s)**: [WildShape] Transfer DAE Effects, Remove WildShape Effect
-* **Langages** : [EN] (current) - [[FR]](https://github.com/MisterHims/DnD5e-WildShape/blob/main/README-FR.md)
+* **Langages** : *[EN] (current)*, [[FR]](https://github.com/MisterHims/DnD5e-WildShape/blob/main/README-FR.md)
 
 ## Description
 
@@ -17,12 +17,12 @@ WildShape is a macro allowing to polymorph his token with the animations availab
 
 The various DAE effects and Token Magic FX animations already present on your character will be preserved.
 
-![WildShape-Demonstration-01](https://github.com/MisterHims/FoundryVTT/DnD5e-WildShape/EN/images/dem_01.gif)
+![WildShape-Demonstration-01](https://github.com/MisterHims/DnD5e-WildShape/blob/main/images/dem_01.gif)
 
 ## Informations
 
 * By default, you will transfer the following capabilities from your original form to your new form:
-  * Mental ablities scores (Wisdom, Intelligence, Charisma)
+  * Mental abilities scores (Wisdom, Intelligence, Charisma)
 
   * Masteries of saving throws
 
@@ -36,7 +36,7 @@ You can yourself choose which capabilities to remove or add from the macro. More
 
 ## Installation
 
-[![Quick video on How to install](https://github.com/MisterHims/FoundryVTT/DnD5e-WildShape/EN/images/how-to-install-the-wildshape-macro.jpg)](https://www.youtube.com/watch?v=_2EZ79JbtFQ)
+[![Quick video on How to install](https://github.com/MisterHims/DnD5e-WildShape/blob/main/images/how-to-install-the-wildshape-macro.jpg)](https://www.youtube.com/watch?v=_2EZ79JbtFQ)
 
 *Note* :
 
@@ -48,7 +48,7 @@ You can yourself choose which capabilities to remove or add from the macro. More
 
 1. First, you need to import into Foundry VTT the two required external macros, save them with their respective names. Repeat the operation with the main "WildShape" Macro", you will make the necessary modifications thereafter.
 
-    **[[WildShape] Transfer DAE Effects](<https://github.com/MisterHims/FoundryVTT/DnD5e-WildShape/EN/Collection/%5BWildShape%5D%20Transfer%20DAE%20Effects.js>)**
+    **[[WildShape] Transfer DAE Effects](<https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/%5BWildShape%5D%20Transfer%20DAE%20Effects.js>)**
 
     ```javascript
     if (actor.data.flags.dnd5e?.isPolymorphed) {
@@ -61,7 +61,7 @@ You can yourself choose which capabilities to remove or add from the macro. More
     }
     ```
 
-    **[Remove WildShape Effect](<https://github.com/MisterHims/FoundryVTT/DnD5e-WildShape/EN/Collection/Remove%20WildShape%20Effect.js>)**
+    **[Remove WildShape Effect](<https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/Remove%20WildShape%20Effect.js>)**
 
     ```javascript
     setTimeout(function () {
@@ -85,7 +85,7 @@ You can yourself choose which capabilities to remove or add from the macro. More
 
 5. Check if the target item is set to 'self' and place Wild Shape in the character sheet of your original form and of your new form.
 
-6. Then let's take the "WildShape Macro" previously added to Foundry VTT, also accessible from the collection [WildShape.js](https://github.com/MisterHims/FoundryVTT/DnD5e-WildShape/EN/WildShape.js):
+6. Then let's take the "WildShape Macro" previously added to Foundry VTT, also accessible from the collection [WildShape.js](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js):
 
    ```javascript
 
