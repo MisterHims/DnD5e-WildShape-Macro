@@ -10,6 +10,8 @@
 * **Module Requirement(s)**: [The Furnace](https://github.com/kakaroto/fvtt-module-furnace), [DAE](https://gitlab.com/tposney/dae), [Token Magic FX](https://github.com/Feu-Secret/Tokenmagic), [Midi-QOL](https://gitlab.com/tposney/midi-qol)
 * **Macro Requirement(s)**: [WildShape] Transfer DAE Effects, Remove WildShape Effect
 
+[FR Version](https://github.com/MisterHims/DnD5e-WildShape/blob/main/README-FR.md)
+
 ## Description
 
 WildShape is a macro allowing to polymorph his token with the animations available from Token Magic FX. The actor's capabilities will thus be replaced by those of the desired shape and he will then see his token replaced.
