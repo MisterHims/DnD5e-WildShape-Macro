@@ -9,6 +9,7 @@
 * **System Compatibility**: DnD5e
 * **Module Requirement(s)**: [The Furnace](https://github.com/kakaroto/fvtt-module-furnace), [DAE](https://gitlab.com/tposney/dae), [Token Magic FX](https://github.com/Feu-Secret/Tokenmagic), [Midi-QOL](https://gitlab.com/tposney/midi-qol)
 * **Macro Requirement(s)**: [WildShape] Transfer DAE Effects, Remove WildShape Effect
+* **Langages** : *[FR] (current)*, [[EN]](https://github.com/MisterHims/DnD5e-WildShape/blob/main/README.md)
 
 ## Description
 
@@ -16,7 +17,7 @@ WildShape est une macro permettant de polymorphe son personnage puis de revenir 
 
 Les différents effets de DAE et les animations de Token Magic FX déjà présentes sur votre personnage seront conservés.
 
-![WildShape-Demonstration-01](https://github.com/MisterHims/FoundryVTT/blob/master/ScriptMacros/WildShape/FR/images/dem_01.gif)
+![WildShape-Demonstration-01](https://github.com/MisterHims/DnD5e-WildShape/blob/main/images/dem_01.gif)
 
 ## Informations
 
@@ -35,7 +36,7 @@ Vous pouvez vous-même choisir les aptitudes à enlever ou à ajouter depuis la 
 
 ## Installation
 
-[![Rapide vidéo sur Comment installer la macro](https://github.com/MisterHims/FoundryVTT/blob/master/ScriptMacros/WildShape/FR/images/how-to-install-the-wildshape-macro.jpg)](https://www.youtube.com/watch?v=_2EZ79JbtFQ)
+[![Rapide vidéo sur Comment installer la macro](https://github.com/MisterHims/DnD5e-WildShape/blob/main/images/how-to-install-the-wildshape-macro.jpg)](https://www.youtube.com/watch?v=_2EZ79JbtFQ)
 
 *A noter* :
 
@@ -47,7 +48,7 @@ Vous pouvez vous-même choisir les aptitudes à enlever ou à ajouter depuis la 
 
 1. Premièrement, vous devez importer dans Foundry VTT les deux macros externes nécessaires, sauvegardez-les avec leurs noms respéctifs. Répetez l'opération avec la macro principale "WildShape Macro", vous-y effectuerez les modifications nécessaires par la suite.
 
-    **[[WildShape] Transfer DAE Effects](<https://github.com/MisterHims/FoundryVTT/blob/master/ScriptMacros/WildShape/FR/Collection/%5BWildShape%5D%20Transfer%20DAE%20Effects.js>)**
+    **[[WildShape] Transfer DAE Effects](<https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/%5BWildShape%5D%20Transfer%20DAE%20Effects.js>)**
 
     ```javascript
     if (actor.data.flags.dnd5e?.isPolymorphed) {
@@ -60,7 +61,7 @@ Vous pouvez vous-même choisir les aptitudes à enlever ou à ajouter depuis la 
     }
     ```
 
-    **[Remove WildShape Effect](<https://github.com/MisterHims/FoundryVTT/blob/master/ScriptMacros/WildShape/FR/Collection/Remove%20WildShape%20Effect.js>)**
+    **[Remove WildShape Effect](<https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/Remove%20WildShape%20Effect.js>)**
 
     ```javascript
     setTimeout(function () {
@@ -84,7 +85,7 @@ Vous pouvez vous-même choisir les aptitudes à enlever ou à ajouter depuis la 
 
 5. Vérifiez si la cible de la Forme Sauvage est bien reglée sur "soi-même" puis placez-là dans la fiche personnage de votre forme de départ (forme originale) et de votre forme d'arrivée (nouvelle forme).
 
-6. Reprenons ensuite la "WildShape Macro" précedemment ajoutée à Foundry VT, également accessible depuis la collection [WildShape.js](https://github.com/MisterHims/FoundryVTT/blob/master/ScriptMacros/WildShape/FR/WildShape.js)) :
+6. Reprenons ensuite la "WildShape Macro" précedemment ajoutée à Foundry VT, également accessible depuis la collection [WildShape.js](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js) :
 
    ```javascript
 
@@ -254,7 +255,7 @@ Vous devrez alors remplacer le numéro de l'animation que vous souhaitez utilise
 
 ```
 
-   *[Ligne 40 à 44](https://github.com/MisterHims/FoundryVTT/blob/ed8a96ecd8fc509820b8328cdb2e0fe8869687c0/ScriptMacros/WildShape/FR/WildShape.js#L42)*
+   *[Ligne 40 à 44](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js#L42)*
 
 ```javascript
 
@@ -266,7 +267,7 @@ Vous devrez alors remplacer le numéro de l'animation que vous souhaitez utilise
 
 ```
 
-   *[Ligne 85 à 89](https://github.com/MisterHims/FoundryVTT/blob/ed8a96ecd8fc509820b8328cdb2e0fe8869687c0/ScriptMacros/WildShape/FR/WildShape.js#L87)*
+   *[Ligne 85 à 89](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js#L87)*
 
 ### Personaliser la taille de sa forme de départ et d'arrivée
 
@@ -312,7 +313,7 @@ R : En fonction de la configuration et de l'optimisation des effets réalisés p
 
 ```
 
-   *[Ligne 63](https://github.com/MisterHims/FoundryVTT/blob/ed8a96ecd8fc509820b8328cdb2e0fe8869687c0/ScriptMacros/WildShape/FR/WildShape.js#L63)*
+   *[Ligne 63](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js#L63)*
 
 ```javascript
 
@@ -320,7 +321,7 @@ R : En fonction de la configuration et de l'optimisation des effets réalisés p
 
 ```
 
-   *[Ligne 105](https://github.com/MisterHims/FoundryVTT/blob/ed8a96ecd8fc509820b8328cdb2e0fe8869687c0/ScriptMacros/WildShape/FR/WildShape.js#L105)*
+   *[Ligne 105](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js#L105)*
 
 Vous devrez alors jouer sur la valeur (1800 dans ce cas précis) et réduire ou augmenter ce nombre. Ce code permet de stopper la boucle d'animation, il est donc néccesaire de le conserver mais vous êtes libre d'y changer sa valeur.
 

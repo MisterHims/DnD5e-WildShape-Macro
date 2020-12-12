@@ -36,7 +36,7 @@ You can yourself choose which capabilities to remove or add from the macro. More
 
 ## Installation
 
-[![Quick video on How to install](https://github.com/MisterHims/DnD5e-WildShape/blob/main/images/how-to-install-the-wildshape-macro.jpg)](https://www.youtube.com/watch?v=_2EZ79JbtFQ)
+[![Quick video on How to install the macro](https://github.com/MisterHims/DnD5e-WildShape/blob/main/images/how-to-install-the-wildshape-macro.jpg)](https://www.youtube.com/watch?v=_2EZ79JbtFQ)
 
 *Note* :
 
@@ -255,7 +255,7 @@ Then you need to replace the type number 6 by the animation number you want to u
 
 ```
 
-   *[Line 40 to 44](https://github.com/MisterHims/FoundryVTT/blob/ed8a96ecd8fc509820b8328cdb2e0fe8869687c0/ScriptMacros/WildShape/EN/WildShape.js#L42)*
+   *[Line 40 to 44](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js#L42)*
 
 ```javascript
 
@@ -267,7 +267,7 @@ Then you need to replace the type number 6 by the animation number you want to u
 
 ```
 
-   *[Line 85 to 89](https://github.com/MisterHims/FoundryVTT/blob/ed8a96ecd8fc509820b8328cdb2e0fe8869687c0/ScriptMacros/WildShape/EN/WildShape.js#L87)*
+   *[Line 85 to 89](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js#L87)*
 
 ### Customize the size of the start and end shape
 
@@ -313,7 +313,7 @@ A: Depending on the configuration and optimization of the effects performed by y
 
 ```
 
-   *[Line 63](https://github.com/MisterHims/FoundryVTT/blob/ed8a96ecd8fc509820b8328cdb2e0fe8869687c0/ScriptMacros/WildShape/EN/WildShape.js#L63)*
+   *[Line 63](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js#L63)*
 
 ```javascript
 
@@ -321,7 +321,7 @@ A: Depending on the configuration and optimization of the effects performed by y
 
 ```
 
-   *[Line 105](https://github.com/MisterHims/FoundryVTT/blob/ed8a96ecd8fc509820b8328cdb2e0fe8869687c0/ScriptMacros/WildShape/EN/WildShape.js#L105)*
+   *[Line 105](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js#L105)*
 
 You will then have to play on the value (1800 in this precise case) and reduce or increase this number. This code is used to stop the animation loop, so it is necessary to keep it but you are free to change its value.
 
