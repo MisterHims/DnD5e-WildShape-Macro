@@ -7,9 +7,9 @@
 * **Version**: 1.0.0 Alpha
 * **Foundry VTT Compatibility**: 0.7.6+
 * **System Compatibility**: DnD5e
-* **Module Requirement(s)**: [The Furnace](https://github.com/kakaroto/fvtt-module-furnace), [DAE](https://gitlab.com/tposney/dae), [Token Magic FX](https://github.com/Feu-Secret/Tokenmagic), [Midi-QOL](https://gitlab.com/tposney/midi-qol)
-* **Macro Requirement(s)**: [WildShape] Transfer DAE Effects, Remove WildShape Effect
-* **Langages** : *[EN] (current)*, [[FR]](https://github.com/MisterHims/DnD5e-WildShape/blob/main/README-FR.md)
+* **Module(s) Requirement(s)**: [The Furnace](https://github.com/kakaroto/fvtt-module-furnace), [DAE](https://gitlab.com/tposney/dae), [Token Magic FX](https://github.com/Feu-Secret/Tokenmagic), [Midi-QOL](https://gitlab.com/tposney/midi-qol)
+* **Macro(s) Requirement(s)**: [WildShape] Transfer DAE Effects, Remove WildShape Effect
+* **Langage(s)** : *[EN] (current)*, [[FR]](https://github.com/MisterHims/DnD5e-WildShape/blob/main/README-FR.md)
 
 ## Description
 
