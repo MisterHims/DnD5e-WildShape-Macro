@@ -205,9 +205,9 @@ You can yourself choose which capabilities to remove or add from the macro. More
 
 7. Replace "Name of your original form" at the beginning of the macro with the name of the main character (the original form).
 
-8. Change the ID in line 10 to the ID of the main character.
+8. Change the ID in line 10 to the ID of the main actor.
 
-9. Replace the ID in line 15 with the ID of the character whose shape you want to adopt.
+9. Replace the ID in line 15 with the ID of the actor whose shape you want to adopt.
 
     *A simple trick to finding out a character ID is to open an article from the Journal tab, switch it to edit mode, then drag and drop characters from the Characters tab inside.*
 
