@@ -36,7 +36,7 @@ Vous pouvez vous-même choisir les aptitudes à enlever ou à ajouter depuis la 
 
 ## Installation
 
-[![Rapide vidéo sur Comment installer la macro](https://github.com/MisterHims/DnD5e-WildShape/blob/main/images/how-to-install-the-wildshape-macro.jpg)](https://www.youtube.com/watch?v=_2EZ79JbtFQ)
+[![Rapide vidéo sur Comment installer la macro](https://github.com/MisterHims/DnD5e-WildShape/blob/main/images/how-to-install-the-wildshape-macro-fr.jpg)](https://www.youtube.com/watch?v=_2EZ79JbtFQ)
 
 *A noter* :
 

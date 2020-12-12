@@ -48,7 +48,7 @@ You can yourself choose which capabilities to remove or add from the macro. More
 
 1. First, you need to import into Foundry VTT the two required external macros, save them with their respective names. Repeat the operation with the main "WildShape" Macro", you will make the necessary modifications thereafter.
 
-    **[[[WildShape] Transfer DAE Effects](<https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/%5BWildShape%5D%20Transfer%20DAE%20Effects.js>)**
+    **[[WildShape] Transfer DAE Effects](<https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/%5BWildShape%5D%20Transfer%20DAE%20Effects.js>)**
 
     ```javascript
     if (actor.data.flags.dnd5e?.isPolymorphed) {
