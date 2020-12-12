@@ -8,7 +8,7 @@
 * **Foundry VTT Compatibility**: 0.7.6+
 * **System Compatibility**: DnD5e
 * **Module(s) Requirement(s)**: [The Furnace](https://github.com/kakaroto/fvtt-module-furnace), [DAE](https://gitlab.com/tposney/dae), [Token Magic FX](https://github.com/Feu-Secret/Tokenmagic), [Midi-QOL](https://gitlab.com/tposney/midi-qol)
-* **Macro(s) Requirement(s)**: [WildShape] Transfer DAE Effects, Remove WildShape Effect
+* **Macro(s) Requirement(s)**: [[WildShape] Transfer DAE Effects](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/%5BWildShape%5D%20Transfer%20DAE%20Effects.js), [Remove WildShape Effect](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/Remove%20WildShape%20Effect.js)
 * **Langage(s)**: *[EN] (current)*, [[FR]](https://github.com/MisterHims/DnD5e-WildShape/blob/main/README-FR.md)
 
 ## Description
@@ -48,7 +48,7 @@ You can yourself choose which capabilities to remove or add from the macro. More
 
 1. First, you need to import into Foundry VTT the two required external macros, save them with their respective names. Repeat the operation with the main "WildShape" Macro", you will make the necessary modifications thereafter.
 
-    **[[WildShape] Transfer DAE Effects](<https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/%5BWildShape%5D%20Transfer%20DAE%20Effects.js>)**
+    **[[[WildShape] Transfer DAE Effects](<https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/%5BWildShape%5D%20Transfer%20DAE%20Effects.js>)**
 
     ```javascript
     if (actor.data.flags.dnd5e?.isPolymorphed) {
@@ -157,7 +157,7 @@ You can yourself choose which capabilities to remove or add from the macro. More
         setTimeout(function () { actorPolymorphism(); }, 1500);
 
         // Transfer all effects from original actor to new actor (except the WildShape effect)
-        let transferDAEeffectsWithoutWildShape = game.macros.getName("[WildShape] Transfer DAE Effects");
+        let transferDAEeffectsWithoutWildShape = game.macros.getName("[[WildShape] Transfer DAE Effects");
         // With delay for the animation time
         setTimeout(function () { transferDAEeffectsWithoutWildShape.execute(wildShapeEffectName); }, 3000);
         // Choose the token size of the new form

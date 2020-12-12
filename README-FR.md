@@ -8,7 +8,7 @@
 * **Version compatible Foundry VTT** : 0.7.65+
 * **Système de jeu compatible** : DnD5e
 * **Module(s) requi(s)** : [The Furnace](https://github.com/kakaroto/fvtt-module-furnace), [DAE](https://gitlab.com/tposney/dae), [Token Magic FX](https://github.com/Feu-Secret/Tokenmagic), [Midi-QOL](https://gitlab.com/tposney/midi-qol)
-* **Macro(s) requis(es)** : [WildShape] Transfer DAE Effects, Remove WildShape Effect
+* **Macro(s) requis(es)** : [[WildShape] Transfer DAE Effects](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/%5BWildShape%5D%20Transfer%20DAE%20Effects.js), [Remove WildShape Effect](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/Remove%20WildShape%20Effect.js)
 * **Language(s)** : *[FR] (actuel)*, [[EN]](https://github.com/MisterHims/DnD5e-WildShape/blob/main/README.md)
 
 ## Description
