@@ -1,4 +1,4 @@
-# ChangeShape
+# WildShape
 
 ![Foundry Badge](https://img.shields.io/badge/Foundry-0.7.6-informational)
 
@@ -8,15 +8,15 @@
 * **Foundry VTT Compatibility**: 0.7.6+
 * **System Compatibility**: DnD5e
 * **Module Requirement(s)**: [The Furnace](https://github.com/kakaroto/fvtt-module-furnace), [DAE](https://gitlab.com/tposney/dae), [Token Magic FX](https://github.com/Feu-Secret/Tokenmagic), [Midi-QOL](https://gitlab.com/tposney/midi-qol)
-* **Macro Requirement(s)**: [ChangeShape] Transfer DAE Effects, Remove ChangeShape Effect
+* **Macro Requirement(s)**: [WildShape] Transfer DAE Effects, Remove WildShape Effect
 
 ## Description
 
-ChangeShape is a macro allowing to polymorph his token with the animations available from Token Magic FX. The actor's capabilities will thus be replaced by those of the desired shahpe and he will then see his token replaced.
+WildShape is a macro allowing to polymorph his token with the animations available from Token Magic FX. The actor's capabilities will thus be replaced by those of the desired shahpe and he will then see his token replaced.
 
 The various DAE effects and Token Magic FX animations already present on your character will be preserved.
 
-![ChangeShape-Demonstration-01](https://github.com/MisterHims/FoundryVTT/blob/master/ScriptMacros/ChangeShape/EN/images/dem_01.gif)
+![WildShape-Demonstration-01](https://github.com/MisterHims/FoundryVTT/blob/master/ScriptMacros/WildShape/EN/images/dem_01.gif)
 
 ## Informations
 
@@ -35,7 +35,7 @@ You can yourself choose which capabilities to remove or add from the macro. More
 
 ## Installation
 
-[![Quick video on How to install](https://github.com/MisterHims/FoundryVTT/blob/master/ScriptMacros/ChangeShape/EN/images/how-to-install-the-Changeshape-macro.jpg)](https://www.youtube.com/watch?v=_2EZ79JbtFQ)
+[![Quick video on How to install](https://github.com/MisterHims/FoundryVTT/blob/master/ScriptMacros/WildShape/EN/images/how-to-install-the-wildshape-macro.jpg)](https://www.youtube.com/watch?v=_2EZ79JbtFQ)
 
 *Note* :
 
@@ -45,9 +45,9 @@ You can yourself choose which capabilities to remove or add from the macro. More
 
 **IMPORTANT** | Follow the steps below exactly, then you will be free to configure the macro to your needs after installation.
 
-1. First, you need to import into Foundry VTT the two required external macros, save them with their respective names. Repeat the operation with the main "ChangeShape" Macro", you will make the necessary modifications thereafter.
+1. First, you need to import into Foundry VTT the two required external macros, save them with their respective names. Repeat the operation with the main "WildShape" Macro", you will make the necessary modifications thereafter.
 
-    **[[ChangeShape] Transfer DAE Effects](<https://github.com/MisterHims/FoundryVTT/blob/master/ScriptMacros/ChangeShape/EN/Collection/%5BChangeShape%5D%20Transfer%20DAE%20Effects.js>)**
+    **[[WildShape] Transfer DAE Effects](<https://github.com/MisterHims/FoundryVTT/blob/master/ScriptMacros/WildShape/EN/Collection/%5BWildShape%5D%20Transfer%20DAE%20Effects.js>)**
 
     ```javascript
     if (actor.data.flags.dnd5e?.isPolymorphed) {
@@ -60,7 +60,7 @@ You can yourself choose which capabilities to remove or add from the macro. More
     }
     ```
 
-    **[Remove ChangeShape Effect](<https://github.com/MisterHims/FoundryVTT/blob/master/ScriptMacros/WildShape/EN/Collection/Remove%20WildShape%20Effect.js>)**
+    **[Remove WildShape Effect](<https://github.com/MisterHims/FoundryVTT/blob/master/ScriptMacros/WildShape/EN/Collection/Remove%20WildShape%20Effect.js>)**
 
     ```javascript
     setTimeout(function () {
