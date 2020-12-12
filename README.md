@@ -9,7 +9,7 @@
 * **System Compatibility**: DnD5e
 * **Module(s) Requirement(s)**: [The Furnace](https://github.com/kakaroto/fvtt-module-furnace), [DAE](https://gitlab.com/tposney/dae), [Token Magic FX](https://github.com/Feu-Secret/Tokenmagic), [Midi-QOL](https://gitlab.com/tposney/midi-qol)
 * **Macro(s) Requirement(s)**: [WildShape] Transfer DAE Effects, Remove WildShape Effect
-* **Langage(s)** : *[EN] (current)*, [[FR]](https://github.com/MisterHims/DnD5e-WildShape/blob/main/README-FR.md)
+* **Langage(s)**: *[EN] (current)*, [[FR]](https://github.com/MisterHims/DnD5e-WildShape/blob/main/README-FR.md)
 
 ## Description
 
