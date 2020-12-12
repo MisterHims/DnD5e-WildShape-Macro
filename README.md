@@ -215,9 +215,21 @@ You can yourself choose which capabilities to remove or add from the macro. More
 
 ## Tips
 
+### Configure your Wild Shape item !
+
 You are free to configure your Wild Shape 'item' as yours needs, you can add for exemple the resource consumption (Attribute: resources.primary.values).
 
+### Homogenize animation
+
 For a better animation, make the ratio size of your original token be the same as the new token form (0.5 and 0.5, 0.8 and 0.8, 1 and 1, ...).
+
+### Add another WildShape to a different actor
+
+If you want to make another WildShape for a different token, you can duplicate the "WildShape Macro" and name that duplication as you wish (for exemple "Eliot WildShape to Bear Macro").
+
+Then you make another WildShape 'item' and change the macro.execute from his "WildShape effect" with the new name (like "Eliot WildShape to Bear Macro").
+
+Don't forget to change the IDs and name in that new created macro
 
 ## Configuration
 
