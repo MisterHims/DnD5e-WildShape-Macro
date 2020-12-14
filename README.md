@@ -352,7 +352,7 @@ The second is the end shape:
 
    *[Line 109](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js#L109)*
 
-Don't forget to uncomment these lines by deleting the two slashes in front
+Don't forget to uncomment these lines by deleting the two slashes in front.
 
 ### Customize the skills to retain during the polymorph
 
