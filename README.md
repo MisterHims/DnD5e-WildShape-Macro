@@ -270,7 +270,7 @@ let actorOriginalFormId = game.actors.get("JmJGW3LivaKbKZYm");
 
 ### Configure your Wild Shape item
 
-You are free to configure your Wild Shape 'item' as yours needs, you can add for exemple the resource consumption (Attribute: resources.primary.values).
+You are free to configure your Wild Shape 'item' as yours needs, you can add for exemple the resource consumption for the original form (Attribute: resources.primary.values).
 
 ### Homogenize animation
 
