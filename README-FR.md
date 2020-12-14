@@ -36,8 +36,6 @@ Vous pouvez vous-même choisir les aptitudes à enlever ou à ajouter depuis la 
 
 ## Installation
 
----
-
 Cette macro a pour vocation de devenir un module par la suite et l'installation de celle-ci ne sera donc plus aussi "compliquée".
 
 ---

@@ -36,8 +36,6 @@ You can yourself choose which capabilities to remove or add from the macro. More
 
 ## Installation
 
----
-
 The purpose of this macro is to become a module thereafter and the installation of this one will not be so "complicated" any more.
 
 ---
