@@ -232,7 +232,7 @@ Une fois ces changements effectués, cela devrai fonctionner. Si ce n'est pas le
 
         ```
 
-        *[Line 5](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js#L5)*
+        *[Ligne 5](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js#L5)*
 
     * l'ID du nouveau personnage du vous souhaitez adopter la forme :
 
@@ -243,7 +243,7 @@ Une fois ces changements effectués, cela devrai fonctionner. Si ce n'est pas le
 
         ```
 
-        *[Line 15](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js#L15)*
+        *[Ligne 15](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js#L15)*
 
 3. Créez ou dupliquez un activable "Wild Shape" existant puis donnez lui un nom (par exemple "Forme du Tigre").
 
@@ -259,12 +259,12 @@ Répétez l'opération au-dessus mais ajoutez cette fois l'ID du du nouveau pers
 
 ```javascript
 
-// Get the Actor name from the original form
-let getOriginalActorForm = game.actors.getName(actorOriginalFormName);
+// Get Actor ID from the original form
+let actorOriginalFormId = game.actors.get("JmJGW3LivaKbKZYm");
 
 ```
 
-*[Line 8](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js#L8)*
+*[Ligne 10](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js#L10)*
 
 ## Conseils
 

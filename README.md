@@ -259,12 +259,12 @@ Repeat the operation above, this time adding the new actor ID of the original fo
 
 ```javascript
 
-// Get the Actor name from the original form
-let getOriginalActorForm = game.actors.getName(actorOriginalFormName);
+// Get Actor ID from the original form
+let actorOriginalFormId = game.actors.get("JmJGW3LivaKbKZYm");
 
 ```
 
-*[Line 8](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js#L8)*
+*[Line 10](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js#L10)*
 
 ## Tips
 
