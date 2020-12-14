@@ -213,6 +213,59 @@ You can yourself choose which capabilities to remove or add from the macro. More
 
 10. After making these changes, you should be able to get the macro to work. If not, you will find more information at the bottom of the page.
 
+## How to add another WildShape
+
+*Creating a new "WildShape" can be a bit boring but it will be greatly improved in the next release.*
+
+### On the same actor
+
+1. You need to duplicate the "WildShape Macro" and rename that copy as you wish (like "Arthur WildShape to Tiger").
+
+2. Then re-edit that macro by changing:
+
+    * the name of the new effect that you will create later (in 4):
+
+        ```javascript
+
+            // Name of your WildShape Effect
+            let wildShapeEffectName = "WildShape Effect";
+
+        ```
+
+        *[Line 5](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js#L5)*
+
+    * the name of the new actor ID you want to be polymorph:
+
+        ```javascript
+
+        // Get Actor ID from the new form
+        let actorNewFormId = game.actors.get("6tag3KViMYOHciFe");
+
+        ```
+
+        *[Line 15](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js#L15)*
+
+3. Create or duplicate an existing Wild Shape item and give it a name (like "WildShape to Tiger").
+
+4. Change the active effect of this new item by giving it the name you already assigned in step 2.
+
+5. Then change the name of the new macro created in step 1 in the macro.execute of this effect.
+
+6. Don't forget to add this new "WildShape" item to the actor of your original shape and new shape.
+
+### To a different actor
+
+Repeat the operation above, this time adding the ID of the new actor of the original form:
+
+```javascript
+
+// Get the Actor name from the original form
+let getOriginalActorForm = game.actors.getName(actorOriginalFormName);
+
+```
+
+*[Line 8](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js#L8)*
+
 ## Tips
 
 ### Configure your Wild Shape item !
@@ -222,14 +275,6 @@ You are free to configure your Wild Shape 'item' as yours needs, you can add for
 ### Homogenize animation
 
 For a better animation, make the ratio size of your original token be the same as the new token form (0.5 and 0.5, 0.8 and 0.8, 1 and 1, ...).
-
-### Add another WildShape to a different actor
-
-If you want to make another WildShape for a different token, you can duplicate the "WildShape Macro" and name that duplication as you wish (for exemple "Eliot WildShape to Bear Macro").
-
-Then you make another WildShape 'item' and change the macro.execute from his "WildShape effect" with the new name (like "Eliot WildShape to Bear Macro").
-
-Don't forget to change the IDs and name in that new created macro
 
 ## Configuration
 
