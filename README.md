@@ -255,7 +255,7 @@ You can yourself choose which capabilities to remove or add from the macro. More
 
 ### To a different actor
 
-Repeat the operation above, this time adding the ID of the new actor of the original form:
+Repeat the operation above, this time adding the new actor ID of the original form:
 
 ```javascript
 
