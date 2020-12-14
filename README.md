@@ -36,6 +36,12 @@ You can yourself choose which capabilities to remove or add from the macro. More
 
 ## Installation
 
+---
+
+The purpose of this macro is to become a module thereafter and the installation of this one will not be so "complicated" any more.
+
+---
+
 [![Quick video on How to install the macro](https://github.com/MisterHims/DnD5e-WildShape/blob/main/images/how-to-install-the-wildshape-macro.jpg)](https://www.youtube.com/watch?v=_2EZ79JbtFQ)
 
 *Note* :
