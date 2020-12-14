@@ -328,12 +328,31 @@ Then you need to replace the type number 6 by the animation number you want to u
 
 ### Customize the size of the start and end shape
 
-By default, the size of the start and end shape is set to 1x1 square. You can change this size by changing the ```width``` and ```height``` values displayed in two places on the macro. The first is the size of the original shape, the second is the end shape.
+By default, the size of the start and end shape is set to 1x1 square. You can change this size by changing the ```width``` and ```height``` values displayed in two places on the macro.
+
+The first is the size of the original shape:
 
 ```javascript
+
+    // Choose the token size of the new form
+    // target.update({ "width": 1, "height": 1, });
+
+```
+
+   *[Line 73](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js#L73)*
+
+The second is the end shape:
+
+```javascript
+
     // Adjusts them back the original size.
     // target.update({"width": 1, "height": 1,});
+
 ```
+
+   *[Line 109](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js#L109)*
+
+Don't forget to uncomment these lines by deleting the two slashes in front
 
 ### Customize the skills to retain during the polymorph
 
