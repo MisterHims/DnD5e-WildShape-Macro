@@ -24,7 +24,7 @@ Les différents effets de DAE et les animations de Token Magic FX déjà présen
 * Par défaut, vous transférerez les aptitudes suivantes de votre forme originale à votre nouvelle forme :
   * Scores d'ablités mentales (Sagesse, Intelligence, Charisme)
 
-  * Maitrîse des jets de sauvegarde
+  * Maîtrise des jets de sauvegarde
 
   * Compétences
 
@@ -79,7 +79,7 @@ Vous pouvez vous-même choisir les aptitudes à enlever ou à ajouter depuis la 
     * Cochez le mode "Suspended"
     * Allez dans l'onglet "Durée" puis ajoutez-y une durée, par exemple 3600 secondes
     * Ajoutez une nouvelle clé d'attribut avec ces valeurs : macro.execute // CUSTOM // "WildShape Macro" // 20.
-    * Après validation, n'oubliez pas de cocher également "Enabled when equiped".
+    * Après validation, n'oubliez pas de cocher également "Enabled when equipped".
 
         *Vous pouvez directement ajouter la durée de l'effet depuis l'onglet Détails de l'objet si vous disposez du module About Time*
 
@@ -213,6 +213,59 @@ Vous pouvez vous-même choisir les aptitudes à enlever ou à ajouter depuis la 
 
 Une fois ces changements effectués, cela devrai fonctionner. Si ce n'est pas le cas, vous trouverez davantage d'informations en bas de page.
 
+## Comment ajouter une nouvelle Forme Sauvage
+
+*Creating a new "WildShape" can be a bit boring but it will be greatly improved in the next release.*
+
+### Au même personnage
+
+1. Vous devez dupliquer la "WildShape Macro" et renommer sa copie comme vous le souhaitez (par exemple, "Arthur Forme du Tigre").
+
+2. Puis ré-éditez la macro en changeant :
+
+    * le nom de l'effet que vous créerez plus tard (à l'étape 4):
+
+        ```javascript
+
+            // Name of your WildShape Effect
+            let wildShapeEffectName = "WildShape Effect";
+
+        ```
+
+        *[Line 5](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js#L5)*
+
+    * l'ID du nouveau personnage du vous souhaitez adopter la forme :
+
+        ```javascript
+
+        // Get Actor ID from the new form
+        let actorNewFormId = game.actors.get("6tag3KViMYOHciFe");
+
+        ```
+
+        *[Line 15](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js#L15)*
+
+3. Créez ou dupliquez un activable "Wild Shape" existant puis donnez lui un nom (par exemple "Forme du Tigre").
+
+4. Changez l'effet actif de ce nouvel activable en lui donnant le nom que vous lui avez déjà attribuer lors de l'étape 2.
+
+5. Changez ensuite le nom de la macro créée lors de l'étape 1 dans la clé d'attribut macro.execute de cet effet.
+
+N'oubliez pas d'ajouter ce nouvel activable "Forme de Tigre" dans l'inventaire du personnage principal et de sa nouvelle forme.
+
+### A un personnage différent
+
+Répétez l'opération au-dessus mais ajoutez cette fois l'ID du du nouveau personnage principal :
+
+```javascript
+
+// Get the Actor name from the original form
+let getOriginalActorForm = game.actors.getName(actorOriginalFormName);
+
+```
+
+*[Line 8](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js#L8)*
+
 ## Conseils
 
 Vous êtes libre de configurer la Forme Sauvage à vos besoins, vous pouvez par exemple ajouter la consommation de ressources à l'intérieur de votre Forme Sauvage (Attribute : resources.primary.values).
@@ -269,16 +322,33 @@ Vous devrez alors remplacer le numéro de l'animation que vous souhaitez utilise
 
    *[Ligne 85 à 89](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js#L87)*
 
-### Personaliser la taille de sa forme de départ et d'arrivée
+### Personnaliser la taille de sa forme de départ et d'arrivée
 
-Par défaut, la taille de la forme de départ et d'arrivée est définie à 1x1 carré. Il vous est possible de modifier cette taille en changeant les valeurs ```js width``` et ```js height``` affichés à deux endroits sur la macro. La première correspond à la taille de la forme originale, la seconde à la forme d'arrivée.
+Par défaut, la taille de la forme de départ et d'arrivée est définie à 1x1 carré. Il vous est possible de modifier cette taille en changeant les valeurs ```width``` et ```height``` affichés à deux endroits sur la macro.
+
+La première correspond à la taille de la forme originale :
 
 ```javascript
-    // Adjusts them back the original size.
-    // target.update({"width": 1, "height": 1,});
+
+    // Choose the token size of the new form
+    // target.update({ "width": 1, "height": 1, });
+
 ```
 
-### Personaliser les aptitudes à conserver lors du polymorph
+   *[Ligne 73](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js#L73)*
+
+La seconde à la forme d'arrivée :
+
+```javascript
+
+    // Adjusts them back the original size.
+    // target.update({"width": 1, "height": 1,});
+
+```
+
+   *[Ligne 109](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js#L109)*
+
+### Personnaliser les aptitudes à conserver lors du polymorph
 
 Il vous est possible d'enlever et/ou d'ajouter différentes aptitudes qui seront transférer à votre nouvelle forme lors du polymorph :
 
@@ -303,7 +373,7 @@ R : Il est nécessaire d'avoir au préalable correctement configuré ces différ
 
 ***
 
-Q : Je rencontre un léger décalage lors de l'animation de mon personnage, il m'arrive aussi des fois de voir une image d'une seconde avec mon ancienne forme qui apparait durant la transition. Je ne sais pas comment résoudre ce problème, que faire ?
+Q : Je rencontre un léger décalage lors de l'animation de mon personnage, il m'arrive aussi des fois de voir une image d'une seconde avec mon ancienne forme qui apparaît durant la transition. Je ne sais pas comment résoudre ce problème, que faire ?
 
 R : En fonction de la configuration et de l'optimisation des effets réalisés par votre navigateur, il est possible de devoir faire quelques ajustements sur la macro lorsque vous rencontrerez les lignes suivantes :
 

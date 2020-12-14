@@ -211,7 +211,7 @@ You can yourself choose which capabilities to remove or add from the macro. More
 
     *A simple trick to finding out a character ID is to open an article from the Journal tab, switch it to edit mode, then drag and drop characters from the Characters tab inside.*
 
-10. After making these changes, you should be able to get the macro to work. If not, you will find more information at the bottom of the page.
+After making these changes, you should be able to get the macro to work. If not, you will find more information at the bottom of the page.
 
 ## How to add another WildShape
 
@@ -223,7 +223,7 @@ You can yourself choose which capabilities to remove or add from the macro. More
 
 2. Then re-edit that macro by changing:
 
-    * the name of the new effect that you will create later (in 4):
+    * the name of the new effect that you will create later (in step 4):
 
         ```javascript
 
@@ -251,7 +251,7 @@ You can yourself choose which capabilities to remove or add from the macro. More
 
 5. Then change the name of the new macro created in step 1 in the macro.execute of this effect.
 
-6. Don't forget to add this new "WildShape" item to the actor of your original shape and new shape.
+Don't forget to add this new "WildShape" item to the actor of your original shape and new shape.
 
 ### To a different actor
 
