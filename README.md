@@ -234,7 +234,7 @@ You can yourself choose which capabilities to remove or add from the macro. More
 
         *[Line 5](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js#L5)*
 
-    * the name of the new actor ID you want to be polymorph:
+    * the new actor ID you want to be polymorph:
 
         ```javascript
 
