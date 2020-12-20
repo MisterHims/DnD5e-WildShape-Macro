@@ -78,10 +78,11 @@ Cette macro a pour vocation de devenir un module par la suite et l'installation 
 2. Par la suite, vous pouvez aller vérifier dans les configurations de Midi-QOL si la case "Auto apply item effects to target" à bien été cochée.
 
 3. Récupérez la compétence Forme Sauvage depuis le Compendium SRD et importez-là a votre liste d'objets.
+    * Edit : Remplacez la valeur de durée 'Instantanée' de l'item par une valeur vide ou tout autre valeur.
 
 4. Créez ensuite un effet DAE nommé "WildShape Effect" sur la Forme Sauvage puis paramétrez cet effet de la façon suivante :
     * Cochez le mode "Suspended"
-    * Allez dans l'onglet "Durée" puis ajoutez-y une durée, par exemple 3600 secondes
+    * ~~Allez dans l'onglet "Durée" puis ajoutez-y une durée, par exemple 3600 secondes~~
     * Ajoutez une nouvelle clé d'attribut avec ces valeurs : macro.execute // CUSTOM // "WildShape Macro" // 20.
     * Après validation, n'oubliez pas de cocher également "Enabled when equipped".
 
