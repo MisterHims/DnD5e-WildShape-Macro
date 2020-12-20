@@ -152,7 +152,6 @@ The purpose of this macro is to become a module thereafter and the installation 
             autoDisable: false,
             autoDestroy: false
         }];
-        //TokenMagic.addFiltersOnSelected(paramsStart, true);
         TokenMagic.addUpdateFilters(target, paramsStart);
         setTimeout(function () { token.TMFXdeleteFilters("polymorphToNewForm") }, 1800);
 
@@ -361,12 +360,12 @@ Don't forget to uncomment these lines by deleting the two slashes in front.
 
 You can remove and / or add different abilities that will be transferred to your new form during the polymorph:
 
-* ```keepPhysical: true``` : Keep Physical Ablitiescores (Str, Dex, Con)
-* ```keepMental: true``` : Keep Mental Ablitiescores (Wis, Int, Cha)
-* ```keepSaves: true``` : Keep Savingthrow Proficiency of the Character
+* ```keepPhysical: true``` : Keep Physical Abilities scores (Str, Dex, Con)
+* ```keepMental: true``` : Keep Mental Abilities scores (Wis, Int, Cha)
+* ```keepSaves: true``` : Keep Saving throw Proficiency of the Character
 * ```keepSkills: true``` : Keep Skill Proficiency of the Character
-* ```mergeSaves: true``` : Merge Savingthrow Proficiencys (take both) this will keep proficiencys of the character intact and also grant any extra proficiencys from the draged on actor
-* ```mergeSkills: true``` : Merge Skill Proficiency (take both) this will keep proficiencys of the character intact and also grant any extra proficiencys from the draged on actor
+* ```mergeSaves: true``` : Merge Saving throw Proficiencies (take both) this will keep proficiencies of the character intact and also grant any extra proficiencies from the dragged on actor
+* ```mergeSkills: true``` : Merge Skill Proficiency (take both) this will keep proficiencies of the character intact and also grant any extra proficiencies from the dragged on actor
 * ```keepClass: true``` : Keep Proficiency bonus (leaves Class items in sheet) this will leave any Class "item" of the original actor in order to keep the original level and therefore Proficiency bonus
 * ```keepFeats: true``` : Keep Features
 * ```keepSpells: true``` : Keep Spells
