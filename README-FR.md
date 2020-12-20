@@ -155,7 +155,7 @@ Cette macro a pour vocation de devenir un module par la suite et l'installation 
         }];
         //TokenMagic.addFiltersOnSelected(paramsStart, true);
         TokenMagic.addUpdateFilters(target, paramsStart);
-        setTimeout(function () { token.TMFXdeleteFilters("polymorphToNewForm") }, 1800);
+        setTimeout(function () { token.TMFXdeleteFilters("polymorphToNewForm") }, 2000);
 
         // Polymorph into the new form with delay for the start animation
         setTimeout(function () { actorPolymorphism(); }, 1500);
@@ -197,7 +197,7 @@ Cette macro a pour vocation de devenir un module par la suite et l'installation 
                     }
                 }];
             token.TMFXaddUpdateFilters(paramsBack);
-            setTimeout(function () { token.TMFXdeleteFilters("polymorphToOriginalForm") }, 1800);
+            setTimeout(function () { token.TMFXdeleteFilters("polymorphToOriginalForm") }, 2000);
             // Revert to original form with delay for the return animation
             setTimeout(function () { actor.revertOriginalForm(); }, 1500);
             // Adjusts them back the original size.
