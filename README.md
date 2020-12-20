@@ -161,7 +161,7 @@ The purpose of this macro is to become a module thereafter and the installation 
         setTimeout(function () { actorPolymorphism(); }, 1500);
 
         // Transfer all effects from original actor to new actor (except the WildShape effect)
-        let transferDAEeffectsWithoutWildShape = game.macros.getName("[[WildShape] Transfer DAE Effects");
+        let transferDAEeffectsWithoutWildShape = game.macros.getName("[WildShape] Transfer DAE Effects");
         // With delay for the animation time
         setTimeout(function () { transferDAEeffectsWithoutWildShape.execute(wildShapeEffectName); }, 3000);
         // Choose the token size of the new form
