@@ -154,7 +154,7 @@ The purpose of this macro is to become a module thereafter and the installation 
         }];
         //TokenMagic.addFiltersOnSelected(paramsStart, true);
         TokenMagic.addUpdateFilters(target, paramsStart);
-        setTimeout(function () { token.TMFXdeleteFilters("polymorphToNewForm") }, 2000);
+        setTimeout(function () { token.TMFXdeleteFilters("polymorphToNewForm") }, 1800);
 
         // Polymorph into the new form with delay for the start animation
         setTimeout(function () { actorPolymorphism(); }, 1500);
@@ -196,7 +196,7 @@ The purpose of this macro is to become a module thereafter and the installation 
                     }
                 }];
             token.TMFXaddUpdateFilters(paramsBack);
-            setTimeout(function () { token.TMFXdeleteFilters("polymorphToOriginalForm") }, 2000);
+            setTimeout(function () { token.TMFXdeleteFilters("polymorphToOriginalForm") }, 1800);
             // Revert to original form with delay for the return animation
             setTimeout(function () { actor.revertOriginalForm(); }, 1500);
             // Adjusts them back the original size.
@@ -388,7 +388,7 @@ A: Depending on the configuration and optimization of the effects performed by y
 
 ```javascript
 
-    setTimeout(function () { token.TMFXdeleteFilters("polymorphToNewForm") }, 2000);
+    setTimeout(function () { token.TMFXdeleteFilters("polymorphToNewForm") }, 1800);
 
 ```
 
@@ -396,13 +396,13 @@ A: Depending on the configuration and optimization of the effects performed by y
 
 ```javascript
 
-    setTimeout(function () { token.TMFXdeleteFilters("polymorphToOriginalForm") }, 2000);
+    setTimeout(function () { token.TMFXdeleteFilters("polymorphToOriginalForm") }, 1800);
 
 ```
 
    *[Line 105](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape.js#L105)*
 
-You will then have to play on the value (2000 in this precise case) and reduce or increase this number. This code is used to stop the animation loop, so it is necessary to keep it but you are free to change its value.
+You will then have to play on the value (1800 in this precise case) and reduce or increase this number. This code is used to stop the animation loop, so it is necessary to keep it but you are free to change its value.
 
 ## Upcoming improvements
 
