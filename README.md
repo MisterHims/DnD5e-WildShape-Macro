@@ -78,14 +78,13 @@ The purpose of this macro is to become a module thereafter and the installation 
 2. Subsequently, you can check in the Midi-QOL configurations if the checkbox "Auto apply item effects to target" has been checked.
 
 3. Get the Wild Shape 'item' from the SRD Compendium "Class Features" and import it to your item list.
+    * Edit: Replace the 'Instantaneous' duration value of that item by an empty value or any others values
 
 4. Next, create a DAE effect named "WildShape Effect" into the Wild Shape item, then configure this effect as follows:
       * Check the "Suspended" mode
-      * Go to the "Duration" tab then add a duration, for example 3600 seconds
+      * ~~Go to the "Duration" tab then add a duration, for example 3600 seconds~~
       * Add a new attribute key with these values: macro.execute // CUSTOM // "WildShape Macro" // 20.
       * After validation, do not forget to also check "Enabled when equipped".
-
-        *You can directly add the duration of the effect from the Details tab of the item if you have the About Time module*
 
 5. Check if the target item is set to 'self' and place Wild Shape in the character sheet of your original form and of your new form.
 
