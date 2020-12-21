@@ -108,7 +108,7 @@ Note:
     }, 3500);
     ```
 
-    **[WildShape Macro](<https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape%20Macro.js>)**
+    **[WildShape Macro](<https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro>)**
 
    ```javascript
     // Name of your WildShape Effect
@@ -264,7 +264,7 @@ After making these changes, you should be able to get the macro to work. If not,
         let actorOriginalFormId = game.actors.get("n9fMPL4lmbGX8K6p");
         ```
 
-        *[Line 5](https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape%20Macro.js#L5)*
+        *[Line 5](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro#L5)*
 
     * the new actor ID you want to be polymorph:
 
@@ -273,7 +273,7 @@ After making these changes, you should be able to get the macro to work. If not,
         let actorNewFormId = game.actors.get("hbhb7dTZs8zop6XC");
         ```
 
-        *[Line 10](https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape%20Macro.js#L10)*
+        *[Line 10](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro#L10)*
 
 3. Then create a new Wild Shape 'item' and add the new macro name in the 'on use macro' field. For example: "Arthur WildShape to Tiger" without the quotes.
 
@@ -325,7 +325,7 @@ Then you need to replace the type number 6 by the animation number you want to u
 
 ```
 
-   *[Line 54 to 58](https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape%20Macro.js#L56)*
+   *[Line 54 to 58](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro#L56)*
 
 ```javascript
 
@@ -337,7 +337,7 @@ Then you need to replace the type number 6 by the animation number you want to u
 
 ```
 
-   *[Line 97 to 101](https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape%20Macro.js#L99)*
+   *[Line 97 to 101](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro#L99)*
 
 ### Customize the size of the start and end shape
 
@@ -354,7 +354,7 @@ The first is the size of the original shape:
 
 ```
 
-   *[Line 88](https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape%20Macro.js#L88)*
+   *[Line 88](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro#L88)*
 
 The second is the end shape:
 
@@ -365,7 +365,7 @@ The second is the end shape:
 
 ```
 
-   *[Line 121](https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape%20Macro.js#L121)*
+   *[Line 121](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro#L121)*
 
 Don't forget to uncomment these lines by deleting the two slashes in front.
 
@@ -404,7 +404,7 @@ A: Depending on the configuration and optimization of the effects performed by y
 
 ```
 
-   *[Line 76](https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape%20Macro.js#L76)*
+   *[Line 76](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro#L76)*
 
 ```javascript
 
@@ -412,7 +412,7 @@ A: Depending on the configuration and optimization of the effects performed by y
 
 ```
 
-   *[Line 117](https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape%20Macro.js#L117)*
+   *[Line 117](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro#L117)*
 
 You will then have to play on the value (1800 in this precise case) and reduce or increase this number. This code is used to stop the animation loop, so it is necessary to keep it but you are free to change its value.
 
