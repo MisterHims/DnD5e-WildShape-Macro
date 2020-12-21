@@ -8,7 +8,7 @@
 * **Foundry VTT Compatibility**: 0.7.6+
 * **System Compatibility**: DnD5e
 * **Module(s) Requirement(s)**: [The Furnace](https://github.com/kakaroto/fvtt-module-furnace), [DAE](https://gitlab.com/tposney/dae), [Token Magic FX](https://github.com/Feu-Secret/Tokenmagic), [Midi-QOL](https://gitlab.com/tposney/midi-qol)
-* **Macro(s) Requirement(s)**: [Transfer DAE Effects](https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/Transfer%20DAE%20Effects.js), [Remove WildShape Effect](https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/Remove%20WildShape%20Effect.js), [WildShape Effect Macro](https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape%20Effect%20Macro)
+* **Macro(s) Requirement(s)**: [Transfer DAE Effects](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/Transfer%20DAE%20Effects.js), [Remove WildShape Effect](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/Remove%20WildShape%20Effect.js), [WildShape Effect Macro](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js)
 * **Langage(s)**: *[EN] (current)*, [[FR]](https://github.com/MisterHims/DnD5e-WildShape/blob/main/README-FR.md)
 
 ## Description
@@ -50,7 +50,7 @@ Note:
 
 1. First, you need to import into Foundry VTT the three required external macros, save them with their respective names. Repeat the operation with the main "WildShape Macro", you will make the necessary modifications thereafter.
 
-    **[WildShape Effect Macro](<https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape%20Effect%20Macro>)**
+    **[WildShape Effect Macro](<https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js>)**
 
     ```javascript
     let getOriginalActorForm = game.actors.getName(args[2]);
@@ -88,7 +88,7 @@ Note:
     }
     ```
 
-    **[Transfer DAE Effects](<https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/Transfer%20DAE%20Effects.js>)**
+    **[Transfer DAE Effects](<https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/Transfer%20DAE%20Effects.js>)**
 
     ```javascript
     if (actor.data.flags.dnd5e?.isPolymorphed) {
@@ -98,7 +98,7 @@ Note:
     }
     ```
 
-    **[Remove WildShape Effect](<https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/Remove%20WildShape%20Effect.js>)**
+    **[Remove WildShape Effect](<https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/Remove%20WildShape%20Effect.js>)**
 
     ```javascript
     setTimeout(function () {
