@@ -19,7 +19,7 @@ The various DAE effects and Token Magic FX animations already present on your ch
 
 If the WildShape effect is removed, the new shape back to the original shape.
 
-![WildShape-Demonstration-01](https://github.com/MisterHims/DnD5e-WildShape/blob/main/images/dem_01.gif)
+![WildShape-Demonstration-0.1.2-alpha](https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/images/dem-0-1-2-alpha.gif)
 
 ## Informations
 
