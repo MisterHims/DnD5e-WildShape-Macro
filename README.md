@@ -40,7 +40,7 @@ You can yourself choose which capabilities to remove or add from the macro. More
 
 The purpose of this macro is to become a module thereafter and the installation of this one will not be so "complicated" any more.
 
-*Note* :
+Note:
 
 * Foundry VTT polymorph requires players to have rights to create new actors and tokens. You will need to allow them to "Create new characters" and "Create new tokens" from the Options configuration.
 
@@ -48,7 +48,7 @@ The purpose of this macro is to become a module thereafter and the installation 
 
 **IMPORTANT** | Follow the steps below exactly, then you will be free to configure the macro to your needs after installation.
 
-1. First, you need to import into Foundry VTT the three required external macros, save them with their respective names. Repeat the operation with the main "WildShape" Macro", you will make the necessary modifications thereafter.
+1. First, you need to import into Foundry VTT the three required external macros, save them with their respective names. Repeat the operation with the main "WildShape Macro", you will make the necessary modifications thereafter.
 
     **[WildShape Effect Macro](<https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape%20Effect%20Macro>)**
 
@@ -108,13 +108,7 @@ The purpose of this macro is to become a module thereafter and the installation 
     }, 3500);
     ```
 
-2. Subsequently, you can check in the Midi-QOL configurations if the checkbox "Auto apply item effects to target" and "Add macro to call on use" has been checked.
-
-3. Get the Wild Shape 'item' from the SRD Compendium "Class Features" and import it to your item list.
-
-4. Access the details tab of that item and in the "Feature Attack" section, select the "Utility" or "Other" Action Type to display the "On use macro" field. Then add "WildShape Macro" without the quotes in this field.
-
-5. Then let's take the "WildShape Macro" previously added to Foundry VTT, also accessible from the collection [WildShape.js](<https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape.js>):
+    **[WildShape Macro](<https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape%20Macro.js>)**
 
    ```javascript
     // Name of your WildShape Effect
@@ -241,6 +235,14 @@ The purpose of this macro is to become a module thereafter and the installation 
     }
    ```
 
+2. Subsequently, you can check in the Midi-QOL configurations if the checkbox "Auto apply item effects to target" and "Add macro to call on use" has been checked.
+
+3. Get the Wild Shape 'item' from the SRD Compendium "Class Features" and import it to your item list.
+
+4. Access the details tab of that item and in the "Feature Attack" section, select the "Utility" or "Other" Action Type to display the "On use macro" field. Then add "WildShape Macro" without the quotes in this field.
+
+5. Then let's take the "WildShape Macro" previously added to Foundry VTT, also accessible from the collection [WildShape Macro](<https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape.js>).
+
 6. Change the ID in line 5 to the ID of the main actor.
 
 7. Replace the ID in line 10 with the ID of the actor whose shape you want to adopt.
@@ -262,7 +264,7 @@ After making these changes, you should be able to get the macro to work. If not,
         let actorOriginalFormId = game.actors.get("n9fMPL4lmbGX8K6p");
         ```
 
-        *[Line 5](https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape.js#L5)*
+        *[Line 5](https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape%20Macro.js#L5)*
 
     * the new actor ID you want to be polymorph:
 
@@ -271,7 +273,7 @@ After making these changes, you should be able to get the macro to work. If not,
         let actorNewFormId = game.actors.get("hbhb7dTZs8zop6XC");
         ```
 
-        *[Line 10](https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape.js#L10)*
+        *[Line 10](https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape%20Macro.js#L10)*
 
 3. Then create a new Wild Shape 'item' and add the new macro name in the 'on use macro' field. For example: "Arthur WildShape to Tiger" without the quotes.
 
@@ -323,7 +325,7 @@ Then you need to replace the type number 6 by the animation number you want to u
 
 ```
 
-   *[Line 54 to 58](https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape.js#L56)*
+   *[Line 54 to 58](https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape%20Macro.js#L56)*
 
 ```javascript
 
@@ -335,7 +337,7 @@ Then you need to replace the type number 6 by the animation number you want to u
 
 ```
 
-   *[Line 97 to 101](https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape.js#L99)*
+   *[Line 97 to 101](https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape%20Macro.js#L99)*
 
 ### Customize the size of the start and end shape
 
@@ -352,7 +354,7 @@ The first is the size of the original shape:
 
 ```
 
-   *[Line 88](https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape.js#L88)*
+   *[Line 88](https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape%20Macro.js#L88)*
 
 The second is the end shape:
 
@@ -363,7 +365,7 @@ The second is the end shape:
 
 ```
 
-   *[Line 121](https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape.js#L121)*
+   *[Line 121](https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape%20Macro.js#L121)*
 
 Don't forget to uncomment these lines by deleting the two slashes in front.
 
@@ -402,7 +404,7 @@ A: Depending on the configuration and optimization of the effects performed by y
 
 ```
 
-   *[Line 76](https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape.js#L76)*
+   *[Line 76](https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape%20Macro.js#L76)*
 
 ```javascript
 
@@ -410,7 +412,7 @@ A: Depending on the configuration and optimization of the effects performed by y
 
 ```
 
-   *[Line 117](https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape.js#L117)*
+   *[Line 117](https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape%20Macro.js#L117)*
 
 You will then have to play on the value (1800 in this precise case) and reduce or increase this number. This code is used to stop the animation loop, so it is necessary to keep it but you are free to change its value.
 
