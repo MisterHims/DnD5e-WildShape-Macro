@@ -243,9 +243,23 @@ Note:
 
 5. Then let's take the "WildShape Macro" previously added to Foundry VTT, also accessible from the collection [WildShape Macro](<https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape.js>).
 
-6. Change the ID in line 5 to the ID of the main actor.
+6. Change the ID in line 5 to the ID of the main actor:
+
+    ```javascript
+    // ID of your original form
+    let actorOriginalFormId = game.actors.get("n9fMPL4lmbGX8K6p");
+    ```
+
+    *[Line 5](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L5)*
 
 7. Replace the ID in line 10 with the ID of the actor whose shape you want to adopt.
+
+    ```javascript
+    // ID of your new form
+    let actorNewFormId = game.actors.get("hbhb7dTZs8zop6XC");
+    ```
+
+    *[Line 10](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L10)*
 
     *A simple trick to finding out a character ID is to open an article from the Journal tab, switch it to edit mode, then drag and drop actors from the Characters tab inside.*
 
