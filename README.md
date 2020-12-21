@@ -251,8 +251,6 @@ After making these changes, you should be able to get the macro to work. If not,
 
 ## How to add another WildShape
 
-*Creating a new "WildShape" can be a bit boring but it will be greatly improved in the next release.*
-
 1. You need to duplicate the "WildShape Macro" and rename that copy as you wish (like "Arthur WildShape to Tiger").
 
 2. Then re-edit that macro by changing:
