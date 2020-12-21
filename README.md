@@ -161,7 +161,7 @@ Note:
 
     // If actor is not already polymorphed, apply the WildShape effect, launch animation and the polymorph then transfer all effects
     if (!actor.data.flags.dnd5e?.isPolymorphed) {
-        setTimeout(function () { actor.createEmbeddedEntity("ActiveEffect", applyWildShapeEffect); }, 1600);
+        actor.createEmbeddedEntity("ActiveEffect", applyWildShapeEffect);
         token.TMFXhasFilterId("polymorphToNewForm");
         let paramsStart = [{
             filterType: "polymorph",
@@ -195,7 +195,7 @@ Note:
         let transferDAEEffects = game.macros.getName("Transfer DAE Effects");
 
         // With delay for the animation time
-        setTimeout(function () { transferDAEEffects.execute(); }, 2000);
+        setTimeout(function () { transferDAEEffects.execute(); }, 3000);
 
         // Set the token size of the new form
         // target.update({ "width": 1, "height": 1, });
