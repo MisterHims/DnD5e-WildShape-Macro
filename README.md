@@ -272,12 +272,12 @@ Note:
             token.TMFXdeleteFilters("polymorphToOriginalForm")
             await delay(100)
             console.log("Delete WildShape Effect")
-            game.actors.getName("Aoth").effects.find(i => i.data.label === "WildShape Effect").delete()
+            game.actors.getName(actorOriginalFormName).effects.find(i => i.data.label === wildShapeEffectName).delete()
         }
         backAnimation()
         target.update({
-            "width": actorNewForm.data.token.width,
-            "height": actorNewForm.data.token.height
+            "width": actorOriginalForm.data.token.width,
+            "height": actorOriginalForm.data.token.height
         })
     }
    ```
@@ -310,7 +310,7 @@ Note:
 
     *A simple trick to finding out a character ID is to open an article from the Journal tab, switch it to edit mode, then drag and drop actors from the Characters tab.*
 
-After making these changes, you should be able to get the macro to work. If not, you will find more information at the bottom of the page.
+    After making these changes, you should be able to get the macro to work. If not, you will find more information at the bottom of the page.
 
 8. You are also free to change the name of the effect when it appears on the new shape:
 

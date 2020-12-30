@@ -162,7 +162,7 @@ if (!actor.data.flags.dnd5e?.isPolymorphed) {
         token.TMFXdeleteFilters("polymorphToOriginalForm")
         await delay(100)
         console.log("Delete WildShape Effect")
-        game.actors.getName("Aoth").effects.find(i => i.data.label === "WildShape Effect").delete()
+        game.actors.getName(actorOriginalFormName).effects.find(i => i.data.label === wildShapeEffectName).delete()
     }
     backAnimation()
     target.update({
