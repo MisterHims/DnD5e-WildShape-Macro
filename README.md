@@ -285,9 +285,11 @@ Note:
 
 4. Access the details tab of that item and in the "Feature Attack" section, select the "Utility" or "Other" Action Type to display the "On use macro" field. Then add "WildShape Macro" without the quotes in this field.
 
-5. Then let's take the "WildShape Macro" previously added to Foundry VTT, also accessible from the collection [WildShape Macro](<https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape.js>).
+5. Now add the Wild Shape 'item' to the original character's sheet and to the shape you want to adopt. You can also drag and drop this item onto your quick access bar.
 
-6. Change the ID in line 5 to the ID of the main actor:
+6. Then let's take the "WildShape Macro" previously added to Foundry VTT, also accessible from the collection [WildShape Macro](<https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape.js>).
+
+7. Change the ID in line 5 to the ID of the main actor:
 
     ```javascript
     // ID of your Original Form Actor
@@ -296,7 +298,7 @@ Note:
 
     *[Line 5](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L5)*
 
-7. Replace the ID in line 180 with the ID of the actor whose shape you want to adopt:
+8. Replace the ID in line 180 with the ID of the actor whose shape you want to adopt:
 
     ```javascript
     // ID of your New Form Actor
@@ -309,7 +311,7 @@ Note:
 
     After making these changes, you should be able to get the macro to work. If not, you will find more information at the bottom of the page.
 
-8. You are also free to change the name of the effect when it appears on the new shape:
+9. You are also free to change the name of the effect when it appears on the new shape:
 
     ```javascript
     // Name of your WildShape Effect
