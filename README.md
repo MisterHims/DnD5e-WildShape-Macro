@@ -462,6 +462,12 @@ Q: I experience a slight lag when animating my character for the first time, why
 
 A: During the first animation, the image of the new token is loaded in your browser and may therefore take a little while before appearing. Unfortunately, there is nothing we can do at the moment.
 
+***
+
+Q: When the transfer effects takes place, the associated macro executions are launched. How to deactivate them?
+
+A: There is currently no long term solution, although this issue is known and is being resolved. When the executed macros concern dialog box choices, simply close the window.
+
 ## Upcoming improvements
 
 I plan to improve this macro to make it a module. This will allow a much easier installation and will also allow you to quickly create and configure different polymorphs (choice of skills to keep, the name of the macro, the name of the effect, the size of the characters, the animation type, etc.)
