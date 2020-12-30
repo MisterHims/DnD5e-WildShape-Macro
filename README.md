@@ -95,12 +95,11 @@ Note:
             actor.revertOriginalForm()
             await delay(100)
             token.TMFXdeleteFilters("polymorphToOriginalForm")
-            await delay(100)
         }
         backAnimation()
         target.update({
-            "width": actorNewForm.data.token.width,
-            "height": actorNewForm.data.token.height
+            "width": actorOriginalForm.data.token.width,
+            "height": actorOriginalForm.data.token.height
         })
     }
     ```

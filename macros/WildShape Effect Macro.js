@@ -44,7 +44,6 @@ if (actor.data.flags.dnd5e?.isPolymorphed && args[0] === "off") {
         actor.revertOriginalForm()
         await delay(100)
         token.TMFXdeleteFilters("polymorphToOriginalForm")
-        await delay(100)
     }
     backAnimation()
     target.update({
