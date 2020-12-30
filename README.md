@@ -312,6 +312,15 @@ Note:
 
 After making these changes, you should be able to get the macro to work. If not, you will find more information at the bottom of the page.
 
+8. You are also free to change the name of the effect when it appears on the new shape:
+
+    ```javascript
+    // Name of your WildShape Effect
+    let wildShapeEffectName = "WildShape Effect"
+    ```
+
+    *[Line 2](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L2)*
+
 ## How to add another WildShape
 
 1. You need to duplicate the "WildShape Macro" and rename that copy as you wish (like "Arthur WildShape to Tiger").
