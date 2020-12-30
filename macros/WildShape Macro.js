@@ -116,7 +116,7 @@ if (!actor.data.flags.dnd5e?.isPolymorphed) {
         TokenMagic.addUpdateFilters(target, paramsStart)
         await delay(1100)
         actorPolymorphism()
-        await delay(1000)
+        await delay(500)
         token.TMFXdeleteFilters("polymorphToNewForm")
         let actorNewShape = game.actors.getName(actorNewShapeName, actorOriginalFormId)
         actorNewShape.createEmbeddedEntity("ActiveEffect", applyWildShapeEffect)
