@@ -270,8 +270,6 @@ Note:
             actor.revertOriginalForm()
             await delay(100)
             token.TMFXdeleteFilters("polymorphToOriginalForm")
-            await delay(100)
-            console.log("Delete WildShape Effect")
             game.actors.getName(actorOriginalFormName).effects.find(i => i.data.label === wildShapeEffectName).delete()
         }
         backAnimation()
@@ -429,7 +427,7 @@ The second is the end shape:
         "height": actorOriginalForm.data.token.height
 ```
 
-   *[Line 169 to 170](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L168)*
+   *[Line 167 to 168](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L166)*
 
 You will also have to repeat this operation in the new "WildShape Effect Macro" (with another name and also change on line 54).
 
