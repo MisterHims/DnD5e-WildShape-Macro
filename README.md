@@ -4,11 +4,11 @@
 
 * **Author**: MisterHims
 * **Special thanks to**: tposney, Ikabodo, Archer, Crymic, Kandashi and many others :)
-* **Version**: 0.1.2 Alpha
+* **Version**: 0.1.3 Alpha
 * **Foundry VTT Compatibility**: 0.7.6+
 * **System Compatibility**: DnD5e
 * **Module(s) Requirement(s)**: [The Furnace](https://github.com/kakaroto/fvtt-module-furnace), [DAE](https://gitlab.com/tposney/dae), [Token Magic FX](https://github.com/Feu-Secret/Tokenmagic), [Midi-QOL](https://gitlab.com/tposney/midi-qol)
-* **Macro(s) Requirement(s)**: [Transfer DAE Effects](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/Transfer%20DAE%20Effects.js), [Remove WildShape Effect](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/Remove%20WildShape%20Effect.js), [WildShape Effect Macro](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Effect%20Macro.js)
+* **Macro(s) Requirement(s)**: [WildShape Effect Macro](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Effect%20Macro.js)
 * **Langage(s)**: *[EN] (current)*, [[FR]](https://github.com/MisterHims/DnD5e-WildShape/blob/main/README-FR.md)
 
 ## Description
@@ -34,11 +34,9 @@ If the WildShape effect is removed, the new shape back to the original shape.
 
   * Class features
 
-You can yourself choose which capabilities to remove or add from the macro. More information on this at the bottom.
+You can yourself choose which capabilities to remove or add from the macro. More information at the bottom.
 
 ## Installation
-
-[![Quick video on How to install](https://github.com/MisterHims/DnD5e-WildShape/blob/main/images/how-to-install-the-wildshape-macro.jpg)](https://www.youtube.com/watch?v=xk31YoK5QYc)
 
 Note:
 
@@ -46,19 +44,28 @@ Note:
 
 * You must also give the players the ownership rights to the actor of the desired shape.
 
-**IMPORTANT** | Follow the steps below exactly, then you will be free to configure the macro to your needs after installation.
-
-1. First, you need to import into Foundry VTT the three required external macros, save them with their respective names. Repeat the operation with the main "WildShape Macro", you will make the necessary modifications thereafter.
+1. First, you need to import into Foundry VTT the "WildShape Effect Macro", save the macro with the name of "WildShape Effect Macro". Repeat the operation with the main "WildShape Macro", you will make the necessary modifications thereafter.
 
     **[WildShape Effect Macro](<https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Effect%20Macro.js>)**
 
     ```javascript
-    let getOriginalActorForm = game.actors.getName(args[2]);
-    let actorOriginalFormImagePath = args[3];
-    let removeWildShapeEffect = game.macros.getName("Remove WildShape Effect");
+    let target = canvas.tokens.controlled[0]
+    let actorOriginalFormId = args[1]
+    let actorOriginalForm = game.actors.get(actorOriginalFormId)
+    let actorOriginalFormName = actorOriginalForm.data.name
+    let actorOriginalFormImagePath = args[2]
+    let actorNewForm = game.actors.get(args[3])
+    let actorNewShapeName = args[4] 
+    let transferDAEEffects = async function () {
+        if (actor.data.flags.dnd5e?.isPolymorphed) {
+            let actorNewShape = game.actors.getName(actorNewShapeName)
+            let actorNewShapeEffectsData = actorNewShape.effects.map(ef => ef.data)
+            await actorOriginalForm.createEmbeddedEntity("ActiveEffect", actorNewShapeEffectsData)
+        }
+    }
+    const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
     if (actor.data.flags.dnd5e?.isPolymorphed && args[0] === "off") {
-        removeWildShapeEffect.execute(args[2], args[1]);
-        token.TMFXhasFilterId("polymorphToOriginalForm");
+        token.TMFXhasFilterId("polymorphToOriginalForm")
         let paramsBack =
             [{
                 filterType: "polymorph",
@@ -79,69 +86,72 @@ Note:
                         loopDuration: 1000
                     }
                 }
-            }];
-        token.TMFXaddUpdateFilters(paramsBack);
-        setTimeout(function () { token.TMFXdeleteFilters("polymorphToOriginalForm") }, 1800);
-        setTimeout(function () { actor.revertOriginalForm(); }, 1500);
-        // Set the token size of the original form
-        // target.update({"width": 1, "height": 1,});
+            }]
+        async function backAnimation() {
+            token.TMFXaddUpdateFilters(paramsBack)
+            await delay(1100)
+            transferDAEEffects()
+            await delay(100)
+            actor.revertOriginalForm()
+            await delay(100)
+            token.TMFXdeleteFilters("polymorphToOriginalForm")
+            await delay(100)
+        }
+        backAnimation()
+        target.update({
+            "width": actorNewForm.data.token.width,
+            "height": actorNewForm.data.token.height
+        })
     }
-    ```
-
-    **[Transfer DAE Effects](<https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/Transfer%20DAE%20Effects.js>)**
-
-    ```javascript
-    if (actor.data.flags.dnd5e?.isPolymorphed) {
-        let originalActor = game.actors.get(actor.data.flags.dnd5e.originalActor);
-        let effectsData = originalActor.effects.map(ef => ef.data);
-        actor.createEmbeddedEntity("ActiveEffect", effectsData)
-    }
-    ```
-
-    **[Remove WildShape Effect](<https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/Remove%20WildShape%20Effect.js>)**
-
-    ```javascript
-    setTimeout(function () {
-        let WildShapeEffect = game.actors.getName(args[0]);
-        let removeWildShapeEffect = WildShapeEffect.effects.find(i => i.data.label === args[1]);
-        removeWildShapeEffect.delete();
-    }, 3500);
     ```
 
     **[WildShape Macro](<https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js>)**
 
    ```javascript
     // Name of your WildShape Effect
-    let wildShapeEffectName = "WildShape Effect";
+    let wildShapeEffectName = "WildShape Effect"
 
-    // ID of your original form
-    let actorOriginalFormId = game.actors.get("n9fMPL4lmbGX8K6p");
-    // Get Image's Token associated with the original actor form
-    let actorOriginalFormImagePath = actorOriginalFormId.data.token.img;
+    // ID of your Original Form Actor
+    let actorOriginalFormId = "p7IwDtKTmpWP52Pu"
 
-    // ID of your new form
-    let actorNewFormId = game.actors.get("hbhb7dTZs8zop6XC");
-    // Get Image's Token associated with the new actor form
-    let actorNewFormImagePath = actorNewFormId.data.token.img;
+    // ID of your New Form Actor
+    let actorNewFormId = "6tag3KViMYOHciFe"
 
-    let actorOriginalFormName = actorOriginalFormId.data.name
+    /////////////////////////////////////////////////////////////
 
-    // Get the Actor name from the original form
-    let getOriginalActorForm = game.actors.getName(actorOriginalFormName);
-    // Get Actor ID from the original form
+    // Get the Original Form Actor
+    let actorOriginalForm = game.actors.get(actorOriginalFormId)
+    // Get the Original Form Actor Name
+    let actorOriginalFormName = actorOriginalForm.data.name
+    // Image's Token associated with the original actor form
+    let actorOriginalFormImagePath = actorOriginalForm.data.token.img
 
-    let target = canvas.tokens.controlled[0];
+    // Get the New Form Actor
+    let actorNewForm = game.actors.get(actorNewFormId)
+    // Get the New Form Actor Name
+    let actorNewFormName = actorNewForm.data.name
+    // Image's Token associated with the new actor form
+    let actorNewFormImagePath = actorNewForm.data.token.img
+
+    // Get the New Shape Actor Name
+    let actorNewShapeName = actorOriginalForm.data.name + ' (' + actorNewForm.data.name + ')'
+
+    // Declare the target
+    let target = canvas.tokens.controlled[0]
+
+    // Declare the delay variable to adjust with animation
+    const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 
     // Declare the polymorph function
     let actorPolymorphism = async function () {
-        // For actorNewFormID, the ratio's Token scale should be the same of the original form
-        actor.transformInto(actorNewFormId, {
+        // For actorNewForm, the ratio's Token scale should be the same of the original form
+        actor.transformInto(actorNewForm, {
             keepMental: true,
             mergeSaves: true,
             mergeSkills: true,
             keepBio: true,
             keepClass: true,
-        });
+        })
     }
 
     // Declare the WildShape Effect
@@ -151,7 +161,7 @@ Note:
         changes: [{
             "key": "macro.execute",
             "mode": 1,
-            "value": `"WildShape Effect Macro"` + `"${wildShapeEffectName}"` + `"${actorOriginalFormName}"` + `"${actorOriginalFormImagePath}"`,
+            "value": `"WildShape Effect Macro"` + `"${actorOriginalFormId}"` + `"${actorOriginalFormImagePath}"` + `"${actorNewFormId}"` + `"${actorNewShapeName}"`,
             "priority": "20"
         }],
         duration: {
@@ -159,10 +169,37 @@ Note:
         }
     }
 
-    // If actor is not already polymorphed, apply the WildShape effect, launch animation and the polymorph then transfer all effects
+    // Declare the Transfer DAE Effects function
+    let transferDAEEffects =  async function () {
+        if (!actor.data.flags.dnd5e?.isPolymorphed) {
+            let actorNewShape = game.actors.getName(actorNewShapeName)
+            let actorOriginalFormEffectsData = actorOriginalForm.effects.map(ef => ef.data)
+            await actorNewShape.createEmbeddedEntity("ActiveEffect", actorOriginalFormEffectsData)
+        } else if (actor.data.flags.dnd5e?.isPolymorphed) {
+            let actorNewShape = game.actors.getName(actorNewShapeName)
+            let actorNewShapeEffectsData = actorNewShape.effects.map(ef => ef.data)
+            await actorOriginalForm.createEmbeddedEntity("ActiveEffect", actorNewShapeEffectsData)
+        }
+    }
+
+    // Declare the Remove DAE Effects function
+    let removeDAEEffects = async function () {
+        try {
+            let mapOriginalActorEffects = actorOriginalForm.effects.map(i => i.data.label)
+            for (let effect in mapOriginalActorEffects) {
+                let actorOriginalFormEffects = actorOriginalForm.effects.find(i => i.data.label === mapOriginalActorEffects[effect])
+                actorOriginalFormEffects.delete()
+            }
+        }
+        catch (error) {
+            console.log('No more effects to remove')
+        }
+
+    }
+
+    // If not already polymorphed, launch startAnimation function
     if (!actor.data.flags.dnd5e?.isPolymorphed) {
-        actor.createEmbeddedEntity("ActiveEffect", applyWildShapeEffect);
-        token.TMFXhasFilterId("polymorphToNewForm");
+        token.TMFXhasFilterId("polymorphToNewForm")
         let paramsStart = [{
             filterType: "polymorph",
             filterId: "polymorphToNewForm",
@@ -184,27 +221,26 @@ Note:
             },
             autoDisable: false,
             autoDestroy: false
-        }];
-        TokenMagic.addUpdateFilters(target, paramsStart);
-        setTimeout(function () { token.TMFXdeleteFilters("polymorphToNewForm") }, 1800);
-
-        // Polymorph into the new form with delay for the start animation
-        setTimeout(function () { actorPolymorphism(); }, 1500);
-
-        // Transfer all effects from original actor to new actor
-        let transferDAEEffects = game.macros.getName("Transfer DAE Effects");
-
-        // With delay for the animation time
-        setTimeout(function () { transferDAEEffects.execute(); }, 3000);
-
-        // Set the token size of the new form
-        // target.update({ "width": 1, "height": 1, });
-
-    // If actor is polymorphed, remove the WildShape effect, launch animation and revert to original form
+        }]
+        async function startAnimation() {
+            TokenMagic.addUpdateFilters(target, paramsStart)
+            await delay(1100)
+            actorPolymorphism()
+            await delay(1000)
+            token.TMFXdeleteFilters("polymorphToNewForm")
+            let actorNewShape = game.actors.getName(actorNewShapeName, actorOriginalFormId)
+            actorNewShape.createEmbeddedEntity("ActiveEffect", applyWildShapeEffect)
+            transferDAEEffects()
+            removeDAEEffects().catch(err => console.error(err))
+        }
+        startAnimation()
+        target.update({
+            "width": actorNewForm.data.token.width,
+            "height": actorNewForm.data.token.height
+        })
+        // If actor is polymorphed, launch backAnimation function
     } else if (actor.data.flags.dnd5e?.isPolymorphed) {
-        let removeWildShapeEffect = game.macros.getName("Remove WildShape Effect");
-        removeWildShapeEffect.execute(actorOriginalFormName, wildShapeEffectName);
-        token.TMFXhasFilterId("polymorphToOriginalForm");
+        token.TMFXhasFilterId("polymorphToOriginalForm")
         let paramsBack =
             [{
                 filterType: "polymorph",
@@ -225,13 +261,24 @@ Note:
                         loopDuration: 1000
                     }
                 }
-            }];
-        token.TMFXaddUpdateFilters(paramsBack);
-        setTimeout(function () { token.TMFXdeleteFilters("polymorphToOriginalForm") }, 1800);
-        // Revert to original form with delay for the return animation
-        setTimeout(function () { actor.revertOriginalForm(); }, 1500);
-        // Set the token size of the original form
-        // target.update({"width": 1, "height": 1,});
+            }]
+        async function backAnimation() {
+            token.TMFXaddUpdateFilters(paramsBack)
+            await delay(1100)
+            transferDAEEffects()
+            await delay(100)
+            actor.revertOriginalForm()
+            await delay(100)
+            token.TMFXdeleteFilters("polymorphToOriginalForm")
+            await delay(100)
+            console.log("Delete WildShape Effect")
+            game.actors.getName("Aoth").effects.find(i => i.data.label === "WildShape Effect").delete()
+        }
+        backAnimation()
+        target.update({
+            "width": actorNewForm.data.token.width,
+            "height": actorNewForm.data.token.height
+        })
     }
    ```
 
@@ -246,22 +293,22 @@ Note:
 6. Change the ID in line 5 to the ID of the main actor:
 
     ```javascript
-    // ID of your original form
-    let actorOriginalFormId = game.actors.get("n9fMPL4lmbGX8K6p");
+    // ID of your Original Form Actor
+    let actorOriginalFormId = "p7IwDtKTmpWP52Pu"
     ```
 
     *[Line 5](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L5)*
 
-7. Replace the ID in line 10 with the ID of the actor whose shape you want to adopt.
+7. Replace the ID in line 180 with the ID of the actor whose shape you want to adopt:
 
     ```javascript
-    // ID of your new form
-    let actorNewFormId = game.actors.get("hbhb7dTZs8zop6XC");
+    // ID of your New Form Actor
+    let actorNewFormId = "6tag3KViMYOHciFe"
     ```
 
-    *[Line 10](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L10)*
+    *[Line 8](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L8)*
 
-    *A simple trick to finding out a character ID is to open an article from the Journal tab, switch it to edit mode, then drag and drop actors from the Characters tab inside.*
+    *A simple trick to finding out a character ID is to open an article from the Journal tab, switch it to edit mode, then drag and drop actors from the Characters tab.*
 
 After making these changes, you should be able to get the macro to work. If not, you will find more information at the bottom of the page.
 
@@ -274,8 +321,8 @@ After making these changes, you should be able to get the macro to work. If not,
     * the new actor ID (or not if it's the same actor):
 
         ```javascript
-        // ID of your original form
-        let actorOriginalFormId = game.actors.get("n9fMPL4lmbGX8K6p");
+        // ID of your Original Form Actor
+        let actorOriginalFormId = "n9fMPL4lmbGX8K6p"
         ```
 
         *[Line 5](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L5)*
@@ -283,11 +330,11 @@ After making these changes, you should be able to get the macro to work. If not,
     * the new actor ID you want to be polymorph:
 
         ```javascript
-        // ID of your new form
-        let actorNewFormId = game.actors.get("hbhb7dTZs8zop6XC");
+        // ID of your New Form Actor
+        let actorNewFormId = "hbhb7dTZs8zop6XC"
         ```
 
-        *[Line 10](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L10)*
+        *[Line 8](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L8)*
 
 3. Then create a new Wild Shape 'item' and add the new macro name in the 'on use macro' field. For example: "Arthur WildShape to Tiger" without the quotes.
 
@@ -301,7 +348,7 @@ You are free to configure your Wild Shape 'item' as yours needs, you can add for
 
 ### Homogenize animation
 
-For a better animation, make the ratio size of your original token be the same as the new token form (0.5 and 0.5, 0.8 and 0.8, 1 and 1, ...).
+For better animation quality, make the ratio size of your original token be the same as the new token form (0.5 and 0.5, 0.8 and 0.8, 1 and 1, ...).
 
 ## Configuration
 
@@ -330,58 +377,52 @@ You can choose different animations from Magic Token FX. There are 9 different t
 Then you need to replace the type number 6 by the animation number you want to use. Can be found in two places in the WildShape macro:
 
 ```javascript
-
     filterType: "polymorph",
     filterId: "polymorphToNewForm",
     type: 6,
     padding: 70,
     magnify: 1,
-
 ```
 
-   *[Line 54 to 58](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L56)*
+   *[Line 94 to 98](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L96)*
 
 ```javascript
-
     filterType: "polymorph",
     filterId: "polymorphToOriginalForm",
     type: 6,
     padding: 70,
     magnify: 1,
-
 ```
 
-   *[Line 97 to 101](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L99)*
+   *[Line 136 to 140](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L138)*
 
 ### Customize the size of the start and end shape
 
-Note: The animation is not very well suited to a change in size, the expected result may not be what you expected
+**IMPORTANT** | You are strongly advised not to make this modification if you do not have a good experience of javascript.
 
-By default, the size of the start and end shape is set to 1x1 square. You can change this size by changing the ```width``` and ```height``` values displayed in two places on the macro.
+By default, the size of the start and end shape is automatically calculated. But if needed, you can change this size by modifying the ```width``` and ```height``` values displayed in two places on the macro.
 
 The first is the size of the original shape:
 
 ```javascript
-
-    // Set the token size of the new form
-    // target.update({ "width": 1, "height": 1, });
-
+    target.update({
+        "width": actorNewForm.data.token.width,
+        "height": actorNewForm.data.token.height
 ```
 
-   *[Line 88](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L88)*
+   *[Line 128 to 129](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L127)*
 
 The second is the end shape:
 
 ```javascript
-
-    // Set the token size of the original form
-    // target.update({"width": 1, "height": 1,});
-
+    target.update({
+        "width": actorOriginalForm.data.token.width,
+        "height": actorOriginalForm.data.token.height
 ```
 
-   *[Line 121](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L121)*
+   *[Line 169 to 170](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L168)*
 
-Don't forget to uncomment these lines by deleting the two slashes in front.
+You will also have to repeat this operation in the new "WildShape Effect Macro" (with another name and also change on line 54).
 
 ### Customize the skills to retain during the polymorph
 
@@ -408,27 +449,9 @@ A: It's necessary to have previously correctly configured these different module
 
 ***
 
-Q: I experience a slight lag when animating my character, sometimes I also see a 1 second frame with my old shape appearing during the transition. I don't know how to solve this issue, what to do?
+Q: I experience a slight lag when animating my character for the first time, why?
 
-A: Depending on the configuration and optimization of the effects performed by your browser, you may need to make some adjustments on the macro when you encounter the following lines:
-
-```javascript
-
-    setTimeout(function () { token.TMFXdeleteFilters("polymorphToNewForm") }, 1800);
-
-```
-
-   *[Line 76](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L76)*
-
-```javascript
-
-    setTimeout(function () { token.TMFXdeleteFilters("polymorphToOriginalForm") }, 1800);
-
-```
-
-   *[Line 117](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L117)*
-
-You will then have to play on the value (1800 in this precise case) and reduce or increase this number. This code is used to stop the animation loop, so it is necessary to keep it but you are free to change its value.
+A: During the first animation, the image of the new token is loaded in your browser and may therefore take a little while before appearing. Unfortunately, there is nothing we can do at the moment.
 
 ## Upcoming improvements
 

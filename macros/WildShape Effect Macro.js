@@ -48,7 +48,7 @@ if (actor.data.flags.dnd5e?.isPolymorphed && args[0] === "off") {
     }
     backAnimation()
     target.update({
-        "width": actorNewForm.data.token.width,
-        "height": actorNewForm.data.token.height
+        "width": actorOriginalForm.data.token.width,
+        "height": actorOriginalForm.data.token.height
     })
 }

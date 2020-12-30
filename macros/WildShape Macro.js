@@ -1,4 +1,4 @@
-// Name of your WildShape Effect (it's recommended to have a different effect name for each new WildShape macro)
+// Name of your WildShape Effect
 let wildShapeEffectName = "WildShape Effect"
 
 // ID of your Original Form Actor
@@ -25,8 +25,6 @@ let actorNewFormImagePath = actorNewForm.data.token.img
 
 // Get the New Shape Actor Name
 let actorNewShapeName = actorOriginalForm.data.name + ' (' + actorNewForm.data.name + ')'
-
-// Get the New Shape Actor
 
 // Declare the target
 let target = canvas.tokens.controlled[0]
@@ -120,13 +118,9 @@ if (!actor.data.flags.dnd5e?.isPolymorphed) {
         actorPolymorphism()
         await delay(1000)
         token.TMFXdeleteFilters("polymorphToNewForm")
-        await delay(100)
         let actorNewShape = game.actors.getName(actorNewShapeName, actorOriginalFormId)
         actorNewShape.createEmbeddedEntity("ActiveEffect", applyWildShapeEffect)
-        await delay(300)
         transferDAEEffects()
-        await delay(400)
-        console.log("Delete All Original Actor Effects")
         removeDAEEffects().catch(err => console.error(err))
     }
     startAnimation()
@@ -172,7 +166,7 @@ if (!actor.data.flags.dnd5e?.isPolymorphed) {
     }
     backAnimation()
     target.update({
-        "width": actorNewForm.data.token.width,
-        "height": actorNewForm.data.token.height
+        "width": actorOriginalForm.data.token.width,
+        "height": actorOriginalForm.data.token.height
     })
 }
