@@ -1,9 +1,20 @@
-let getOriginalActorForm = game.actors.getName(args[2]);
-let actorOriginalFormImagePath = args[3];
-let removeWildShapeEffect = game.macros.getName("Remove WildShape Effect");
+let target = canvas.tokens.controlled[0]
+let actorOriginalFormId = args[1]
+let actorOriginalForm = game.actors.get(actorOriginalFormId)
+let actorOriginalFormName = actorOriginalForm.data.name
+let actorOriginalFormImagePath = args[2]
+let actorNewForm = game.actors.get(args[3])
+let actorNewShapeName = args[4] 
+let transferDAEEffects = async function () {
+    if (actor.data.flags.dnd5e?.isPolymorphed) {
+        let actorNewShape = game.actors.getName(actorNewShapeName)
+        let actorNewShapeEffectsData = actorNewShape.effects.map(ef => ef.data)
+        await actorOriginalForm.createEmbeddedEntity("ActiveEffect", actorNewShapeEffectsData)
+    }
+}
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 if (actor.data.flags.dnd5e?.isPolymorphed && args[0] === "off") {
-    removeWildShapeEffect.execute(args[2], args[1]);
-    token.TMFXhasFilterId("polymorphToOriginalForm");
+    token.TMFXhasFilterId("polymorphToOriginalForm")
     let paramsBack =
         [{
             filterType: "polymorph",
@@ -24,10 +35,20 @@ if (actor.data.flags.dnd5e?.isPolymorphed && args[0] === "off") {
                     loopDuration: 1000
                 }
             }
-        }];
-    token.TMFXaddUpdateFilters(paramsBack);
-    setTimeout(function () { token.TMFXdeleteFilters("polymorphToOriginalForm") }, 1800);
-    setTimeout(function () { actor.revertOriginalForm(); }, 1500);
-    // Set the token size of the original form
-    // target.update({"width": 1, "height": 1,});
+        }]
+    async function backAnimation() {
+        token.TMFXaddUpdateFilters(paramsBack)
+        await delay(1100)
+        transferDAEEffects()
+        await delay(100)
+        actor.revertOriginalForm()
+        await delay(100)
+        token.TMFXdeleteFilters("polymorphToOriginalForm")
+        await delay(100)
+    }
+    backAnimation()
+    target.update({
+        "width": actorNewForm.data.token.width,
+        "height": actorNewForm.data.token.height
+    })
 }

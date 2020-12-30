@@ -1,34 +1,49 @@
-// Name of your WildShape Effect
-let wildShapeEffectName = "WildShape Effect";
+// Name of your WildShape Effect (it's recommended to have a different effect name for each new WildShape macro)
+let wildShapeEffectName = "WildShape Effect"
 
-// ID of your original form
-let actorOriginalFormId = game.actors.get("n9fMPL4lmbGX8K6p");
-// Get Image's Token associated with the original actor form
-let actorOriginalFormImagePath = actorOriginalFormId.data.token.img;
+// ID of your Original Form Actor
+let actorOriginalFormId = "p7IwDtKTmpWP52Pu"
 
-// ID of your new form
-let actorNewFormId = game.actors.get("hbhb7dTZs8zop6XC");
-// Get Image's Token associated with the new actor form
-let actorNewFormImagePath = actorNewFormId.data.token.img;
+// ID of your New Form Actor
+let actorNewFormId = "6tag3KViMYOHciFe"
 
-let actorOriginalFormName = actorOriginalFormId.data.name
+/////////////////////////////////////////////////////////////
 
-// Get the Actor name from the original form
-let getOriginalActorForm = game.actors.getName(actorOriginalFormName);
-// Get Actor ID from the original form
+// Get the Original Form Actor
+let actorOriginalForm = game.actors.get(actorOriginalFormId)
+// Get the Original Form Actor Name
+let actorOriginalFormName = actorOriginalForm.data.name
+// Image's Token associated with the original actor form
+let actorOriginalFormImagePath = actorOriginalForm.data.token.img
 
-let target = canvas.tokens.controlled[0];
+// Get the New Form Actor
+let actorNewForm = game.actors.get(actorNewFormId)
+// Get the New Form Actor Name
+let actorNewFormName = actorNewForm.data.name
+// Image's Token associated with the new actor form
+let actorNewFormImagePath = actorNewForm.data.token.img
+
+// Get the New Shape Actor Name
+let actorNewShapeName = actorOriginalForm.data.name + ' (' + actorNewForm.data.name + ')'
+
+// Get the New Shape Actor
+
+// Declare the target
+let target = canvas.tokens.controlled[0]
+
+// Declare the delay variable to adjust with animation
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 
 // Declare the polymorph function
 let actorPolymorphism = async function () {
-    // For actorNewFormID, the ratio's Token scale should be the same of the original form
-    actor.transformInto(actorNewFormId, {
+    // For actorNewForm, the ratio's Token scale should be the same of the original form
+    actor.transformInto(actorNewForm, {
         keepMental: true,
         mergeSaves: true,
         mergeSkills: true,
         keepBio: true,
         keepClass: true,
-    });
+    })
 }
 
 // Declare the WildShape Effect
@@ -38,7 +53,7 @@ let applyWildShapeEffect = {
     changes: [{
         "key": "macro.execute",
         "mode": 1,
-        "value": `"WildShape Effect Macro"` + `"${wildShapeEffectName}"` + `"${actorOriginalFormName}"` + `"${actorOriginalFormImagePath}"`,
+        "value": `"WildShape Effect Macro"` + `"${actorOriginalFormId}"` + `"${actorOriginalFormImagePath}"` + `"${actorNewFormId}"` + `"${actorNewShapeName}"`,
         "priority": "20"
     }],
     duration: {
@@ -46,10 +61,37 @@ let applyWildShapeEffect = {
     }
 }
 
-// If actor is not already polymorphed, apply the WildShape effect, launch animation and the polymorph then transfer all effects
+// Declare the Transfer DAE Effects function
+let transferDAEEffects =  async function () {
+    if (!actor.data.flags.dnd5e?.isPolymorphed) {
+        let actorNewShape = game.actors.getName(actorNewShapeName)
+        let actorOriginalFormEffectsData = actorOriginalForm.effects.map(ef => ef.data)
+        await actorNewShape.createEmbeddedEntity("ActiveEffect", actorOriginalFormEffectsData)
+    } else if (actor.data.flags.dnd5e?.isPolymorphed) {
+        let actorNewShape = game.actors.getName(actorNewShapeName)
+        let actorNewShapeEffectsData = actorNewShape.effects.map(ef => ef.data)
+        await actorOriginalForm.createEmbeddedEntity("ActiveEffect", actorNewShapeEffectsData)
+    }
+}
+
+// Declare the Remove DAE Effects function
+let removeDAEEffects = async function () {
+    try {
+        let mapOriginalActorEffects = actorOriginalForm.effects.map(i => i.data.label)
+        for (let effect in mapOriginalActorEffects) {
+            let actorOriginalFormEffects = actorOriginalForm.effects.find(i => i.data.label === mapOriginalActorEffects[effect])
+            actorOriginalFormEffects.delete()
+        }
+    }
+    catch (error) {
+        console.log('No more effects to remove')
+    }
+
+}
+
+// If not already polymorphed, launch startAnimation function
 if (!actor.data.flags.dnd5e?.isPolymorphed) {
-    actor.createEmbeddedEntity("ActiveEffect", applyWildShapeEffect);
-    token.TMFXhasFilterId("polymorphToNewForm");
+    token.TMFXhasFilterId("polymorphToNewForm")
     let paramsStart = [{
         filterType: "polymorph",
         filterId: "polymorphToNewForm",
@@ -71,27 +113,30 @@ if (!actor.data.flags.dnd5e?.isPolymorphed) {
         },
         autoDisable: false,
         autoDestroy: false
-    }];
-    TokenMagic.addUpdateFilters(target, paramsStart);
-    setTimeout(function () { token.TMFXdeleteFilters("polymorphToNewForm") }, 1800);
-
-    // Polymorph into the new form with delay for the start animation
-    setTimeout(function () { actorPolymorphism(); }, 1500);
-
-    // Transfer all effects from original actor to new actor
-    let transferDAEEffects = game.macros.getName("Transfer DAE Effects");
-
-    // With delay for the animation time
-    setTimeout(function () { transferDAEEffects.execute(); }, 3000);
-
-    // Set the token size of the new form
-    // target.update({ "width": 1, "height": 1, });
-
-// If actor is polymorphed, remove the WildShape effect, launch animation and revert to original form
+    }]
+    async function startAnimation() {
+        TokenMagic.addUpdateFilters(target, paramsStart)
+        await delay(1100)
+        actorPolymorphism()
+        await delay(1000)
+        token.TMFXdeleteFilters("polymorphToNewForm")
+        await delay(100)
+        let actorNewShape = game.actors.getName(actorNewShapeName, actorOriginalFormId)
+        actorNewShape.createEmbeddedEntity("ActiveEffect", applyWildShapeEffect)
+        await delay(300)
+        transferDAEEffects()
+        await delay(400)
+        console.log("Delete All Original Actor Effects")
+        removeDAEEffects().catch(err => console.error(err))
+    }
+    startAnimation()
+    target.update({
+        "width": actorNewForm.data.token.width,
+        "height": actorNewForm.data.token.height
+    })
+    // If actor is polymorphed, launch backAnimation function
 } else if (actor.data.flags.dnd5e?.isPolymorphed) {
-    let removeWildShapeEffect = game.macros.getName("Remove WildShape Effect");
-    removeWildShapeEffect.execute(actorOriginalFormName, wildShapeEffectName);
-    token.TMFXhasFilterId("polymorphToOriginalForm");
+    token.TMFXhasFilterId("polymorphToOriginalForm")
     let paramsBack =
         [{
             filterType: "polymorph",
@@ -112,11 +157,22 @@ if (!actor.data.flags.dnd5e?.isPolymorphed) {
                     loopDuration: 1000
                 }
             }
-        }];
-    token.TMFXaddUpdateFilters(paramsBack);
-    setTimeout(function () { token.TMFXdeleteFilters("polymorphToOriginalForm") }, 1800);
-    // Revert to original form with delay for the return animation
-    setTimeout(function () { actor.revertOriginalForm(); }, 1500);
-    // Set the token size of the original form
-    // target.update({"width": 1, "height": 1,});
+        }]
+    async function backAnimation() {
+        token.TMFXaddUpdateFilters(paramsBack)
+        await delay(1100)
+        transferDAEEffects()
+        await delay(100)
+        actor.revertOriginalForm()
+        await delay(100)
+        token.TMFXdeleteFilters("polymorphToOriginalForm")
+        await delay(100)
+        console.log("Delete WildShape Effect")
+        game.actors.getName("Aoth").effects.find(i => i.data.label === "WildShape Effect").delete()
+    }
+    backAnimation()
+    target.update({
+        "width": actorNewForm.data.token.width,
+        "height": actorNewForm.data.token.height
+    })
 }
