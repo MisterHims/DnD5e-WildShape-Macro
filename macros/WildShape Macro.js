@@ -60,7 +60,7 @@ let applyWildShapeEffect = {
 }
 
 // Declare the Transfer DAE Effects function
-let transferDAEEffects =  async function () {
+let transferDAEEffects = async function () {
     if (!actor.data.flags.dnd5e?.isPolymorphed) {
         let actorNewShape = game.actors.getName(actorNewShapeName)
         let actorOriginalFormEffectsData = actorOriginalForm.effects.map(ef => ef.data)
@@ -82,7 +82,7 @@ let removeDAEEffects = async function () {
         }
     }
     catch (error) {
-        console.log('No more effects to remove')
+        console.log('DnD5e-WildShape | Tried to remove an effect but no more effects to remove')
     }
 
 }
@@ -120,8 +120,9 @@ if (!actor.data.flags.dnd5e?.isPolymorphed) {
         token.TMFXdeleteFilters("polymorphToNewForm")
         let actorNewShape = game.actors.getName(actorNewShapeName, actorOriginalFormId)
         actorNewShape.createEmbeddedEntity("ActiveEffect", applyWildShapeEffect)
-        transferDAEEffects()
         removeDAEEffects().catch(err => console.error(err))
+        await delay(200)
+        transferDAEEffects()
     }
     startAnimation()
     target.update({
@@ -167,4 +168,3 @@ if (!actor.data.flags.dnd5e?.isPolymorphed) {
         "width": actorOriginalForm.data.token.width,
         "height": actorOriginalForm.data.token.height
     })
-}

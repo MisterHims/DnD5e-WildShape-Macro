@@ -169,7 +169,7 @@ Note:
     }
 
     // Declare the Transfer DAE Effects function
-    let transferDAEEffects =  async function () {
+    let transferDAEEffects = async function () {
         if (!actor.data.flags.dnd5e?.isPolymorphed) {
             let actorNewShape = game.actors.getName(actorNewShapeName)
             let actorOriginalFormEffectsData = actorOriginalForm.effects.map(ef => ef.data)
@@ -191,7 +191,7 @@ Note:
             }
         }
         catch (error) {
-            console.log('No more effects to remove')
+            console.log('DnD5e-WildShape | Tried to remove an effect but no more effects to remove')
         }
 
     }
@@ -229,8 +229,9 @@ Note:
             token.TMFXdeleteFilters("polymorphToNewForm")
             let actorNewShape = game.actors.getName(actorNewShapeName, actorOriginalFormId)
             actorNewShape.createEmbeddedEntity("ActiveEffect", applyWildShapeEffect)
-            transferDAEEffects()
             removeDAEEffects().catch(err => console.error(err))
+            await delay(200)
+            transferDAEEffects()
         }
         startAnimation()
         target.update({
@@ -276,7 +277,6 @@ Note:
             "width": actorOriginalForm.data.token.width,
             "height": actorOriginalForm.data.token.height
         })
-    }
    ```
 
 2. Subsequently, you can check in the Midi-QOL configurations if the checkbox "Auto apply item effects to target" and "Add macro to call on use" has been checked.
