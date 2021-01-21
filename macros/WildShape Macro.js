@@ -2,10 +2,10 @@
 let wildShapeEffectName = "WildShape Effect"
 
 // ID of your Original Form Actor
-let actorOriginalFormId = "p7IwDtKTmpWP52Pu"
+let actorOriginalFormId = "C9sDWccht0Cy2MEG"
 
 // ID of your New Form Actor
-let actorNewFormId = "6tag3KViMYOHciFe"
+let actorNewFormId = "K5ZQuSbxKiFo5vXH"
 
 /////////////////////////////////////////////////////////////
 
@@ -60,7 +60,7 @@ let applyWildShapeEffect = {
 }
 
 // Declare the Transfer DAE Effects function
-let transferDAEEffects =  async function () {
+let transferDAEEffects = async function () {
     if (!actor.data.flags.dnd5e?.isPolymorphed) {
         let actorNewShape = game.actors.getName(actorNewShapeName)
         let actorOriginalFormEffectsData = actorOriginalForm.effects.map(ef => ef.data)
@@ -82,7 +82,7 @@ let removeDAEEffects = async function () {
         }
     }
     catch (error) {
-        console.log('No more effects to remove')
+        console.log('DnD5e-WildShape | Try to remove effects but no more effects to remove')
     }
 
 }
