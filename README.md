@@ -1,4 +1,4 @@
-# WildShape
+# DnD5e-WildShape-Macro
 
 ![Foundry Badge](https://img.shields.io/badge/Foundry-0.7.6-informational)
 
@@ -8,8 +8,8 @@
 * **Foundry VTT Compatibility**: 0.7.6+
 * **System Compatibility**: DnD5e
 * **Module(s) Requirement(s)**: [The Furnace](https://github.com/kakaroto/fvtt-module-furnace), [DAE](https://gitlab.com/tposney/dae), [Token Magic FX](https://github.com/Feu-Secret/Tokenmagic), [Midi-QOL](https://gitlab.com/tposney/midi-qol)
-* **Macro(s) Requirement(s)**: [WildShape Effect Macro](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Effect%20Macro.js)
-* **Langage(s)**: *[EN] (current)*, [[FR]](https://github.com/MisterHims/DnD5e-WildShape/blob/main/README-FR.md)
+* **Macro(s) Requirement(s)**: [WildShape Effect Macro](https://github.com/MisterHims/DnD5e-WildShape-Macro/blob/main/macros/WildShape%20Effect%20Macro.js)
+* **Langage(s)**: *[EN] (current)*, [[FR]](https://github.com/MisterHims/DnD5e-WildShape-Macro/blob/main/README-FR.md)
 
 ## Description
 
@@ -19,7 +19,7 @@ The various DAE effects and Token Magic FX animations already present on your ch
 
 If the WildShape effect is removed, the new shape back to the original shape.
 
-![WildShape-Demonstration-0.1.3-alpha](https://github.com/MisterHims/DnD5e-WildShape/blob/main/images/dem-0-1-3-alpha.gif)
+![WildShape-Demonstration-0.1.3-alpha](https://github.com/MisterHims/DnD5e-WildShape-Macro/blob/main/images/dem-0-1-3-alpha.gif)
 
 ## Informations
 
@@ -46,7 +46,7 @@ Note:
 
 1. First, you need to import into Foundry VTT the "WildShape Effect Macro", save the macro with the name of "WildShape Effect Macro". Repeat the operation with the main "WildShape Macro", you will make the necessary modifications thereafter.
 
-    **[WildShape Effect Macro](<https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Effect%20Macro.js>)**
+    **[WildShape Effect Macro](<https://github.com/MisterHims/DnD5e-WildShape-Macro/blob/main/macros/WildShape%20Effect%20Macro.js>)**
 
     ```javascript
     let target = canvas.tokens.controlled[0]
@@ -104,7 +104,7 @@ Note:
     }
     ```
 
-    **[WildShape Macro](<https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js>)**
+    **[WildShape Macro](<https://github.com/MisterHims/DnD5e-WildShape-Macro/blob/main/macros/WildShape%20Macro.js>)**
 
    ```javascript
     // Name of your WildShape Effect
@@ -191,7 +191,7 @@ Note:
             }
         }
         catch (error) {
-            console.log('DnD5e-WildShape | Tried to remove an effect but no more effects to remove')
+            console.log('DnD5e-WildShape-Macro | Tried to remove an effect but no more effects to remove')
         }
 
     }
@@ -287,7 +287,7 @@ Note:
 
 5. Now add the Wild Shape 'item' to the original character's sheet and to the shape you want to adopt. You can also drag and drop this item onto your quick access bar.
 
-6. Then let's take the "WildShape Macro" previously added to Foundry VTT, also accessible from the collection [WildShape Macro](<https://github.com/MisterHims/DnD5e-WildShape/blob/0.1.2-alpha/macros/WildShape.js>).
+6. Then let's take the "WildShape Macro" previously added to Foundry VTT, also accessible from the collection [WildShape Macro](<https://github.com/MisterHims/DnD5e-WildShape-Macro/blob/0.1.2-alpha/macros/WildShape.js>).
 
 7. Change the ID in line 5 to the ID of the main actor:
 
@@ -296,7 +296,7 @@ Note:
     let actorOriginalFormId = "p7IwDtKTmpWP52Pu"
     ```
 
-    *[Line 5](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L5)*
+    *[Line 5](https://github.com/MisterHims/DnD5e-WildShape-Macro/blob/main/macros/WildShape%20Macro.js#L5)*
 
 8. Replace the ID in line 180 with the ID of the actor whose shape you want to adopt:
 
@@ -305,7 +305,7 @@ Note:
     let actorNewFormId = "6tag3KViMYOHciFe"
     ```
 
-    *[Line 8](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L8)*
+    *[Line 8](https://github.com/MisterHims/DnD5e-WildShape-Macro/blob/main/macros/WildShape%20Macro.js#L8)*
 
     *A simple trick to finding out a character ID is to open an article from the Journal tab, switch it to edit mode, then drag and drop actors from the Characters tab.*
 
@@ -318,7 +318,7 @@ Note:
     let wildShapeEffectName = "WildShape Effect"
     ```
 
-    *[Line 2](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L2)*
+    *[Line 2](https://github.com/MisterHims/DnD5e-WildShape-Macro/blob/main/macros/WildShape%20Macro.js#L2)*
 
 ## How to add another WildShape
 
@@ -333,7 +333,7 @@ Note:
         let actorOriginalFormId = "n9fMPL4lmbGX8K6p"
         ```
 
-        *[Line 5](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L5)*
+        *[Line 5](https://github.com/MisterHims/DnD5e-WildShape-Macro/blob/main/macros/WildShape%20Macro.js#L5)*
 
     * the new actor ID you want to be polymorph:
 
@@ -342,7 +342,7 @@ Note:
         let actorNewFormId = "hbhb7dTZs8zop6XC"
         ```
 
-        *[Line 8](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L8)*
+        *[Line 8](https://github.com/MisterHims/DnD5e-WildShape-Macro/blob/main/macros/WildShape%20Macro.js#L8)*
 
 3. Then create a new Wild Shape 'item' and add the new macro name in the 'on use macro' field. For example: "Arthur WildShape to Tiger" without the quotes.
 
@@ -392,7 +392,7 @@ Then you need to replace the type number 6 by the animation number you want to u
     magnify: 1,
 ```
 
-   *[Line 94 to 98](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L96)*
+   *[Line 94 to 98](https://github.com/MisterHims/DnD5e-WildShape-Macro/blob/main/macros/WildShape%20Macro.js#L96)*
 
 ```javascript
     filterType: "polymorph",
@@ -402,7 +402,7 @@ Then you need to replace the type number 6 by the animation number you want to u
     magnify: 1,
 ```
 
-   *[Line 136 to 140](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L138)*
+   *[Line 136 to 140](https://github.com/MisterHims/DnD5e-WildShape-Macro/blob/main/macros/WildShape%20Macro.js#L138)*
 
 ### Customize the size of the start and end shape
 
@@ -418,7 +418,7 @@ The first is the size of the original shape:
         "height": actorNewForm.data.token.height
 ```
 
-   *[Line 128 to 129](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L127)*
+   *[Line 128 to 129](https://github.com/MisterHims/DnD5e-WildShape-Macro/blob/main/macros/WildShape%20Macro.js#L127)*
 
 The second is the end shape:
 
@@ -428,7 +428,7 @@ The second is the end shape:
         "height": actorOriginalForm.data.token.height
 ```
 
-   *[Line 167 to 168](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Macro.js#L166)*
+   *[Line 167 to 168](https://github.com/MisterHims/DnD5e-WildShape-Macro/blob/main/macros/WildShape%20Macro.js#L166)*
 
 You will also have to repeat this operation in the new "WildShape Effect Macro" (with another name and also change on line 54).
 
