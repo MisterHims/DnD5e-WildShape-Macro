@@ -4,7 +4,7 @@ let actorOriginalForm = game.actors.get(actorOriginalFormId)
 let actorOriginalFormName = actorOriginalForm.data.name
 let actorOriginalFormImagePath = args[2]
 let actorNewForm = game.actors.get(args[3])
-let actorNewShapeName = args[4] 
+let actorNewShapeName = args[4]
 let transferDAEEffects = async function () {
     if (actor.data.flags.dnd5e?.isPolymorphed) {
         let actorNewShape = game.actors.getName(actorNewShapeName)
@@ -14,7 +14,6 @@ let transferDAEEffects = async function () {
 }
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 if (actor.data.flags.dnd5e?.isPolymorphed && args[0] === "off") {
-    token.TMFXhasFilterId("polymorphToOriginalForm")
     let paramsBack =
         [{
             filterType: "polymorph",
@@ -36,7 +35,12 @@ if (actor.data.flags.dnd5e?.isPolymorphed && args[0] === "off") {
                 }
             }
         }]
+    target.update({
+        "width": actorOriginalForm.data.token.width,
+        "height": actorOriginalForm.data.token.height
+    })
     async function backAnimation() {
+        token.TMFXhasFilterId("polymorphToOriginalForm")
         token.TMFXaddUpdateFilters(paramsBack)
         await delay(1100)
         transferDAEEffects()
@@ -46,8 +50,4 @@ if (actor.data.flags.dnd5e?.isPolymorphed && args[0] === "off") {
         token.TMFXdeleteFilters("polymorphToOriginalForm")
     }
     backAnimation()
-    target.update({
-        "width": actorOriginalForm.data.token.width,
-        "height": actorOriginalForm.data.token.height
-    })
 }
