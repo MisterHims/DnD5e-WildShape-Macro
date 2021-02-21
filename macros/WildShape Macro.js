@@ -1,145 +1,99 @@
+// Name of the folder in which the beasts are located
+let beastsFolder = "Beasts"
+
 // Name of your WildShape Effect
 let wildShapeEffectName = "WildShape Effect"
 
-// ID of your Original Form Actor
-let actorOriginalFormId = "p7IwDtKTmpWP52Pu"
-
-// ID of your New Form Actor
-let actorNewFormId = "6tag3KViMYOHciFe"
-
-/////////////////////////////////////////////////////////////
-
-// Get the Original Form Actor
-let actorOriginalForm = game.actors.get(actorOriginalFormId)
-// Get the Original Form Actor Name
-let actorOriginalFormName = actorOriginalForm.data.name
-// Image's Token associated with the original actor form
-let actorOriginalFormImagePath = actorOriginalForm.data.token.img
-
-// Get the New Form Actor
-let actorNewForm = game.actors.get(actorNewFormId)
-// Get the New Form Actor Name
-let actorNewFormName = actorNewForm.data.name
-// Image's Token associated with the new actor form
-let actorNewFormImagePath = actorNewForm.data.token.img
-
-// Get the New Shape Actor Name
-let actorNewShapeName = actorOriginalForm.data.name + ' (' + actorNewForm.data.name + ')'
+/////////////////////////////////////////////////////
 
 // Declare the target
 let target = canvas.tokens.controlled[0]
 
-// Declare the delay variable to adjust with animation
-const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
+// Get the ID of your the actual target (current Actor Form)
+let currentFormActorId = target.actor.data._id
 
-// Declare the polymorph function
-let actorPolymorphism = async function () {
-    // For actorNewForm, the ratio's Token scale should be the same of the original form
-    actor.transformInto(actorNewForm, {
-        keepMental: true,
-        mergeSaves: true,
-        mergeSkills: true,
-        keepBio: true,
-        keepClass: true,
-    })
-}
+// Declare my WildShape transformation function
+let wildShapeTransform = async function (actorOriginalForm, actorNewFormId) {
 
-// Declare the WildShape Effect
-let applyWildShapeEffect = {
-    label: wildShapeEffectName,
-    icon: "systems/dnd5e/icons/skills/green_13.jpg",
-    changes: [{
-        "key": "macro.execute",
-        "mode": 1,
-        "value": `"WildShape Effect Macro"` + `"${actorOriginalFormId}"` + `"${actorOriginalFormImagePath}"` + `"${actorNewFormId}"` + `"${actorNewShapeName}"`,
-        "priority": "20"
-    }],
-    duration: {
-        "seconds": 7200,
+    // Image's Token associated with the original actor form
+    let actorOriginalFormImagePath = actorOriginalForm.data.token.img
+
+    // Get the New Form Actor
+    let actorNewForm = game.actors.get(actorNewFormId)
+    // Set the token rotation to default value
+    actorNewForm._data.token.rotation = 0
+    // Image's Token associated with the new actor form
+    let actorNewFormImagePath = actorNewForm.data.token.img
+
+    // Get the New Shape Actor Name
+    let actorNewShapeName = actorOriginalForm.data.name + ' (' + actorNewForm.data.name + ')'
+
+    // Declare the polymorph function
+    let actorPolymorphism = async function () {
+        // For actorNewForm, the ratio's Token scale should be the same of the original form
+        actor.transformInto(actorNewForm, {
+            keepMental: true,
+            mergeSaves: true,
+            mergeSkills: true,
+            keepBio: true,
+            keepClass: true,
+        })
     }
-}
 
-// Declare the Transfer DAE Effects function
-let transferDAEEffects = async function () {
-    if (!actor.data.flags.dnd5e?.isPolymorphed) {
-        let actorNewShape = game.actors.getName(actorNewShapeName)
-        let actorOriginalFormEffectsData = actorOriginalForm.effects.map(ef => ef.data)
-        await actorNewShape.createEmbeddedEntity("ActiveEffect", actorOriginalFormEffectsData)
-    } else if (actor.data.flags.dnd5e?.isPolymorphed) {
-        let actorNewShape = game.actors.getName(actorNewShapeName)
-        let actorNewShapeEffectsData = actorNewShape.effects.map(ef => ef.data)
-        await actorOriginalForm.createEmbeddedEntity("ActiveEffect", actorNewShapeEffectsData)
-    }
-}
-
-// Declare the Remove DAE Effects function
-let removeDAEEffects = async function () {
-    try {
-        let mapOriginalActorEffects = actorOriginalForm.effects.map(i => i.data.label)
-        for (let effect in mapOriginalActorEffects) {
-            let actorOriginalFormEffects = actorOriginalForm.effects.find(i => i.data.label === mapOriginalActorEffects[effect])
-            actorOriginalFormEffects.delete()
+    // Declare the WildShape Effect
+    let applyWildShapeEffect = {
+        label: wildShapeEffectName,
+        icon: "systems/dnd5e/icons/skills/green_13.jpg",
+        changes: [{
+            "key": "macro.execute",
+            "mode": 1,
+            "value": `"WildShape Effect Macro"` + `"${currentFormActorId}"` + `"${actorOriginalFormImagePath}"` + `"${actorNewFormId}"` + `"${actorNewShapeName}"`,
+            "priority": "20"
+        }],
+        duration: {
+            "seconds": 7200,
         }
     }
-    catch (error) {
-        console.log('DnD5e-WildShape | Tried to remove an effect but no more effects to remove')
+
+    let transferDAEEffects = async function (actorOriginalForm) {
+        if (!actor.data.flags.dnd5e?.isPolymorphed) {
+            let actorNewShape = game.actors.get(actorNewFormId)
+            let actorOriginalFormEffectsData = actorOriginalForm.effects.map(ef => ef.data)
+            await actorNewShape.createEmbeddedEntity("ActiveEffect", actorOriginalFormEffectsData)
+        } else {
+            let actorNewShape = game.actors.get(actorNewFormId)
+            let actorNewShapeEffectsData = actorNewShape.effects.map(ef => ef.data)
+            await actorOriginalForm.createEmbeddedEntity("ActiveEffect", actorNewShapeEffectsData)
+        }
     }
 
-}
-
-// If not already polymorphed, launch startAnimation function
-if (!actor.data.flags.dnd5e?.isPolymorphed) {
-    token.TMFXhasFilterId("polymorphToNewForm")
-    let paramsStart = [{
-        filterType: "polymorph",
-        filterId: "polymorphToNewForm",
-        type: 6,
-        padding: 70,
-        magnify: 1,
-        imagePath: actorNewFormImagePath,
-        animated:
-        {
-            progress:
-            {
-                active: true,
-                animType: "halfCosOscillation",
-                val1: 0,
-                val2: 100,
-                loops: 1,
-                loopDuration: 1000
+    // Declare the Remove DAE Effects function
+    let removeDAEEffects = async function () {
+        try {
+            let mapOriginalActorEffects = actorOriginalForm.effects.map(i => i.data.label)
+            for (let effect in mapOriginalActorEffects) {
+                let actorOriginalFormEffects = actorOriginalForm.effects.find(i => i.data.label === mapOriginalActorEffects[effect])
+                actorOriginalFormEffects.delete()
             }
-        },
-        autoDisable: false,
-        autoDestroy: false
-    }]
-    async function startAnimation() {
-        TokenMagic.addUpdateFilters(target, paramsStart)
-        await delay(1100)
-        actorPolymorphism()
-        await delay(500)
-        token.TMFXdeleteFilters("polymorphToNewForm")
-        let actorNewShape = game.actors.getName(actorNewShapeName, actorOriginalFormId)
-        actorNewShape.createEmbeddedEntity("ActiveEffect", applyWildShapeEffect)
-        removeDAEEffects().catch(err => console.error(err))
-        await delay(200)
-        transferDAEEffects()
+        }
+        catch (error) {
+            console.log('DnD5e-WildShape | Tried to remove an effect but no more effects to remove')
+        }
+
     }
-    startAnimation()
-    target.update({
-        "width": actorNewForm.data.token.width,
-        "height": actorNewForm.data.token.height
-    })
-    // If actor is polymorphed, launch backAnimation function
-} else if (actor.data.flags.dnd5e?.isPolymorphed) {
-    token.TMFXhasFilterId("polymorphToOriginalForm")
-    let paramsBack =
-        [{
+
+    // Declare the delay variable to adjust with animation
+    const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
+
+    // If not already polymorphed, launch startAnimation function
+    if (!actor.data.flags.dnd5e?.isPolymorphed) {
+        let paramsStart = [{
             filterType: "polymorph",
-            filterId: "polymorphToOriginalForm",
+            filterId: "polymorphToNewForm",
             type: 6,
             padding: 70,
             magnify: 1,
-            imagePath: actorOriginalFormImagePath,
+            imagePath: actorNewFormImagePath,
             animated:
             {
                 progress:
@@ -151,20 +105,97 @@ if (!actor.data.flags.dnd5e?.isPolymorphed) {
                     loops: 1,
                     loopDuration: 1000
                 }
-            }
+            },
+            autoDisable: false,
+            autoDestroy: false
         }]
-    async function backAnimation() {
-        token.TMFXaddUpdateFilters(paramsBack)
-        await delay(1100)
-        transferDAEEffects()
-        await delay(100)
-        actor.revertOriginalForm()
-        await delay(100)
-        token.TMFXdeleteFilters("polymorphToOriginalForm")
-        game.actors.getName(actorOriginalFormName).effects.find(i => i.data.label === wildShapeEffectName).delete()
+
+        target.update({
+            "width": actorNewForm.data.token.width,
+            "height": actorNewForm.data.token.height
+        })
+        async function startAnimation() {
+            await token.TMFXhasFilterId("polymorphToNewForm")
+            await TokenMagic.addUpdateFilters(target, paramsStart)
+            await delay(1100)
+            await actorPolymorphism()
+            await delay(500)
+            await token.TMFXdeleteFilters("polymorphToNewForm")
+            let actorNewShape = game.actors.getName(actorNewShapeName)
+            await actorNewShape.createEmbeddedEntity("ActiveEffect", applyWildShapeEffect)
+            await removeDAEEffects().catch(err => console.error(err))
+        }
+        startAnimation()
+        // If actor is polymorphed, launch backAnimation function
+    } else {
+        // Image's Token associated with the original actor form
+        actorOriginalFormImagePath = actorOriginalForm.data.token.img
+        let paramsBack =
+            [{
+                filterType: "polymorph",
+                filterId: "polymorphToOriginalForm",
+                type: 6,
+                padding: 70,
+                magnify: 1,
+                imagePath: actorOriginalFormImagePath,
+                animated:
+                {
+                    progress:
+                    {
+                        active: true,
+                        animType: "halfCosOscillation",
+                        val1: 0,
+                        val2: 100,
+                        loops: 1,
+                        loopDuration: 1000
+                    }
+                }
+            }]
+        target.update({
+            "width": actorOriginalForm.data.token.width,
+            "height": actorOriginalForm.data.token.height
+        })
+        async function backAnimation() {
+            token.TMFXhasFilterId("polymorphToOriginalForm")
+            token.TMFXaddUpdateFilters(paramsBack)
+            await delay(1100)
+            await transferDAEEffects(actorOriginalForm)
+            await actor.revertOriginalForm()
+            await token.TMFXdeleteFilters("polymorphToOriginalForm")
+            actorOriginalForm.effects.find(i => i.data.label === wildShapeEffectName).delete()
+        }
+        backAnimation()
     }
-    backAnimation()
-    target.update({
-        "width": actorOriginalForm.data.token.width,
-        "height": actorOriginalForm.data.token.height
-    })
+}
+
+// If not already polymorphed, display the dialog box
+if (!actor.data.flags.dnd5e?.isPolymorphed) {
+    let actorOriginalForm = game.actors.get(currentFormActorId)
+    let selectBeasts = '<form><div class="form-group"><label>Choose the beast: </label><select id="wildShapeBeasts">';
+    game.folders.getName(beastsFolder).content.forEach(function (beast) {
+        let optBeast = '<option value="' + beast.data._id + '">' + beast.data.name + '</option>';
+        selectBeasts += optBeast;
+    });
+    selectBeasts += '</select></div></form>'
+    new Dialog({
+        title: "DnD5e-WildShape",
+        content: selectBeasts,
+        buttons: {
+            yes: {
+                icon: '<i class="fas fa-check"></i>',
+                label: "Roar!",
+                callback: () => {
+                    // Get the New Form Actor ID
+                    let actorNewFormId = $('#wildShapeBeasts').find(":selected").val();
+                    wildShapeTransform(actorOriginalForm, actorNewFormId);
+                }
+            }
+        }
+    }).render(true);
+    // Else, launch the WildShape transformation function
+} else {
+    let actorOriginalId = game.actors.get(currentFormActorId)._data.flags.dnd5e.originalActor
+    let actorOriginalForm = game.actors.get(actorOriginalId)
+    let actorNewFormId = _token.actor.data._id
+    wildShapeTransform(actorOriginalForm, actorNewFormId);
+}
