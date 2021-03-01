@@ -6,7 +6,7 @@
 * **Special thanks to**: winterwulf, Jaweaver and many others :)
 * **Version**: 0.1.4 Alpha
 * **Foundry VTT Compatibility**: 0.7.9
-* **System Compatibility**: DnD5e
+* **System Compatibility**: DnD5e 1.2.4+
 * **Module(s) Requirement(s)**: [The Furnace](https://github.com/kakaroto/fvtt-module-furnace), [DAE](https://gitlab.com/tposney/dae), [Token Magic FX](https://github.com/Feu-Secret/Tokenmagic), [Midi-QOL](https://gitlab.com/tposney/midi-qol)
 * **Macro(s) Requirement(s)**: [WildShape Effect Macro](https://github.com/MisterHims/DnD5e-WildShape/blob/main/macros/WildShape%20Effect%20Macro.js)
 * **Langage(s)**: *[EN] (current)* <!-- , [[FR]](https://github.com/MisterHims/DnD5e-WildShape/blob/main/README-FR.md)-->
