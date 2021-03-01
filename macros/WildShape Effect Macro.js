@@ -14,6 +14,7 @@ let transferDAEEffects = async function () {
 }
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 if (actor.data.flags.dnd5e?.isPolymorphed && args[0] === "off") {
+    actorOriginalFormImagePath = actorOriginalForm.data.token.img
     let paramsBack =
         [{
             filterType: "polymorph",
@@ -43,11 +44,8 @@ if (actor.data.flags.dnd5e?.isPolymorphed && args[0] === "off") {
         token.TMFXhasFilterId("polymorphToOriginalForm")
         token.TMFXaddUpdateFilters(paramsBack)
         await delay(1100)
-        transferDAEEffects()
-        await delay(100)
-        actor.revertOriginalForm()
-        await delay(100)
-        token.TMFXdeleteFilters("polymorphToOriginalForm")
+        await actor.revertOriginalForm()
+        await token.TMFXdeleteFilters("polymorphToOriginalForm")
     }
     backAnimation()
 }
