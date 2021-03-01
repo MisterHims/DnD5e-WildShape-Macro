@@ -100,7 +100,6 @@ let wildShapeTransform = async function (actorOriginalForm, actorNewFormId) {
             await TokenMagic.addUpdateFilters(target, paramsStart)
             await delay(1100)
             await actorPolymorphism()
-            // await removeDAEEffects().catch(err => console.error(err))
         }
         startAnimation()
         // If actor is polymorphed, launch backAnimation function
