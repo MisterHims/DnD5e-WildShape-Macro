@@ -44,8 +44,8 @@ if (actor.data.flags.dnd5e?.isPolymorphed && args[0] === "off") {
         await Hooks.once("sightRefresh", async function () {
             await token.TMFXdeleteFilters("polymorphToOriginalForm")
         });
-        token.TMFXhasFilterId("polymorphToOriginalForm")
-        token.TMFXaddUpdateFilters(paramsBack)
+        await token.TMFXhasFilterId("polymorphToOriginalForm")
+        await token.TMFXaddUpdateFilters(paramsBack)
         await delay(1100)
         await actor.revertOriginalForm()
     }

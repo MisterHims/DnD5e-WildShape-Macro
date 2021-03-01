@@ -95,8 +95,8 @@ Note:
             await Hooks.once("sightRefresh", async function () {
                 await token.TMFXdeleteFilters("polymorphToOriginalForm")
             });
-            token.TMFXhasFilterId("polymorphToOriginalForm")
-            token.TMFXaddUpdateFilters(paramsBack)
+            await token.TMFXhasFilterId("polymorphToOriginalForm")
+            await token.TMFXaddUpdateFilters(paramsBack)
             await delay(1100)
             await actor.revertOriginalForm()
         }
@@ -242,8 +242,8 @@ Note:
                 await Hooks.once("sightRefresh", async function () {
                     await token.TMFXdeleteFilters("polymorphToOriginalForm")
                 });
-                token.TMFXhasFilterId("polymorphToOriginalForm")
-                token.TMFXaddUpdateFilters(paramsBack)
+                await token.TMFXhasFilterId("polymorphToOriginalForm")
+                await token.TMFXaddUpdateFilters(paramsBack)
                 await delay(1100)
                 await actor.revertOriginalForm()
             }
