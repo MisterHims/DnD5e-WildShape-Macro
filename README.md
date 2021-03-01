@@ -92,11 +92,13 @@ Note:
             "height": actorOriginalForm.data.token.height
         })
         async function backAnimation() {
+            await Hooks.once("sightRefresh", async function () {
+                await token.TMFXdeleteFilters("polymorphToOriginalForm")
+            });
             token.TMFXhasFilterId("polymorphToOriginalForm")
             token.TMFXaddUpdateFilters(paramsBack)
             await delay(1100)
             await actor.revertOriginalForm()
-            await token.TMFXdeleteFilters("polymorphToOriginalForm")
         }
         backAnimation()
     }
@@ -195,11 +197,9 @@ Note:
             })
             async function startAnimation() {
                 await Hooks.once("createActiveEffect", async function () {
-                    console.log("Hooks.once('updateToken'")
                     await token.TMFXdeleteFilters("polymorphToNewForm")
                 });
                 await Hooks.once("sightRefresh", async function () {
-                    console.log("Hooks.once('sightRefresh'")
                     let actorNewShape = game.actors.getName(actorNewShapeName)
                     await actorNewShape.createEmbeddedEntity("ActiveEffect", applyWildShapeEffect)
                 });
@@ -239,11 +239,13 @@ Note:
                 "height": actorOriginalForm.data.token.height
             })
             async function backAnimation() {
+                await Hooks.once("sightRefresh", async function () {
+                    await token.TMFXdeleteFilters("polymorphToOriginalForm")
+                });
                 token.TMFXhasFilterId("polymorphToOriginalForm")
                 token.TMFXaddUpdateFilters(paramsBack)
                 await delay(1100)
                 await actor.revertOriginalForm()
-                await token.TMFXdeleteFilters("polymorphToOriginalForm")
             }
             backAnimation()
         }
