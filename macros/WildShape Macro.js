@@ -8,6 +8,8 @@ let wildShapeEffectName = "WildShape Effect"
 
 // Declare the target
 let target = canvas.tokens.controlled[0]
+token = target
+actor = game.actors.get(actor._id)
 
 // Get the ID of your the actual target (current Actor Form)
 let currentFormActorId = target.actor.data._id
